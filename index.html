@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumatif Tengah Semester - Ujian Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a; --bg2: #1e293b; --bg3: #263549;
+      --opt: #2a3a50; --opt-h: #334561;
+      --t1: #f1f5f9; --t2: #94a3b8; --t3: #64748b;
+      --ac: #3b82f6; --ac2: #2563eb; --acg: rgba(59,130,246,.3);
+      --ok: #22c55e; --okbg: rgba(34,197,94,.15);
+      --err: #ef4444; --errbg: rgba(239,68,68,.15);
+      --brd: #334155; --r: 12px; --rs: 8px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;line-height:1.6}
+    .header{background:linear-gradient(135deg,#1e3a5f,#0f172a);border-bottom:1px solid var(--brd);padding:16px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+    .header-inner{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+    .header h1{font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .header .sub{font-size:.78rem;color:var(--t3);margin-top:2px}
+    .header-right{display:flex;align-items:center;gap:12px}
+    .timer{font-size:1.3rem;font-weight:700;color:var(--ac);font-variant-numeric:tabular-nums;background:rgba(59,130,246,.1);padding:5px 14px;border-radius:var(--rs);border:1px solid rgba(59,130,246,.2)}
+    .btn-back{background:0 0;border:1px solid var(--brd);color:var(--t2);padding:7px 14px;border-radius:var(--rs);cursor:pointer;font-size:.83rem;font-family:inherit;transition:all .2s}
+    .btn-back:hover{background:var(--opt);color:var(--t1)}
+    .container{max-width:900px;margin:0 auto;padding:28px 24px 90px}
+    .picker{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;text-align:center}
+    .picker .icon{font-size:3.5rem;margin-bottom:12px}
+    .picker h2{font-size:1.8rem;font-weight:800;margin-bottom:6px;background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .picker p{color:var(--t2);margin-bottom:36px;font-size:1rem}
+    .file-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;width:100%;max-width:900px}
+    .file-card{background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);padding:26px;cursor:pointer;transition:all .25s;text-align:left;position:relative;overflow:hidden}
+    .file-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ac),#a78bfa);opacity:0;transition:opacity .25s}
+    .file-card:hover{background:var(--bg3);border-color:var(--ac);transform:translateY(-2px);box-shadow:0 10px 15px -3px rgba(0,0,0,.4),0 0 20px var(--acg)}
+    .file-card:hover::before{opacity:1}
+    .file-card .emoji{font-size:2rem;display:block;margin-bottom:12px}
+    .file-card .name{font-weight:700;font-size:1.1rem;margin-bottom:4px}
+    .file-card .desc{font-size:.85rem;color:var(--t3)}
+    .exam{display:none}.exam.active{display:block}
+    .picker.hidden{display:none}
+    .exam-title{font-size:1.6rem;font-weight:800;margin-bottom:6px;color:var(--t1)}
+    .exam-meta{color:var(--t2);font-size:.9rem;margin-bottom:28px}
+    .section-hdr{font-size:1.15rem;font-weight:700;margin:36px 0 16px;padding:14px 20px;background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(167,139,250,.15));border-left:4px solid var(--ac);border-radius:0 var(--rs) var(--rs) 0;color:#93c5fd}
+    .q-card{background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);padding:22px;margin-bottom:14px;transition:all .3s}
+    .q-card.answered{border-color:rgba(59,130,246,.4)}
+    .q-card.correct{border-color:var(--ok)!important;background:var(--okbg)!important}
+    .q-card.incorrect{border-color:var(--err)!important;background:var(--errbg)!important}
+    .q-card.unanswered{border-color:var(--err)!important;opacity:.7}
+    .correct-badge,.incorrect-badge{display:inline-block;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:8px}
+    .correct-badge{background:var(--okbg);color:var(--ok)}
+    .incorrect-badge{background:var(--errbg);color:var(--err)}
+    .correct-answer-text{margin-top:10px;font-size:.85rem;color:var(--ok);font-weight:600;padding:8px 12px;background:rgba(34,197,94,.08);border-radius:var(--rs)}
+    .opt.correct-opt{background:var(--okbg)!important;border-color:var(--ok)!important}
+    .opt.wrong-opt{background:var(--errbg)!important;border-color:var(--err)!important}
+    .opt.correct-opt .opt-r{border-color:var(--ok)!important;background:var(--ok)!important}
+    .opt.wrong-opt .opt-r{border-color:var(--err)!important;background:var(--err)!important}
+    .submitted .opt{pointer-events:none}
+    .submitted .text-ans{pointer-events:none}
+    .q-num{font-size:.73rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+    .q-text{font-size:1rem;font-weight:500;margin-bottom:14px;line-height:1.7}
+    .q-text img{display:block;max-width:100%;max-height:250px;border-radius:var(--rs);margin:12px 0;border:1px solid var(--brd);object-fit:contain;background:#fff}
+    .opts{display:flex;flex-direction:column;gap:7px}
+    .opt{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--opt);border:2px solid transparent;border-radius:var(--rs);cursor:pointer;transition:all .2s;font-size:1rem}
+    .opt:hover{background:var(--opt-h);border-color:rgba(59,130,246,.3)}
+    .opt.sel{background:rgba(29,78,216,.25);border-color:var(--ac)}
+    .opt-r{width:20px;height:20px;border-radius:50%;border:2px solid var(--t3);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+    .opt.sel .opt-r{border-color:var(--ac);background:var(--ac)}
+    .opt.sel .opt-r::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%}
+    .opt-l{font-weight:600;color:var(--t2);min-width:20px}
+    .opt-t{flex:1}
+    .text-ans{width:100%;padding:13px 16px;background:var(--opt);border:2px solid var(--brd);border-radius:var(--rs);color:var(--t1);font-family:inherit;font-size:1rem;transition:border-color .2s;outline:0}
+    .text-ans:focus{border-color:var(--ac);box-shadow:0 0 0 3px var(--acg)}
+    .text-ans::placeholder{color:var(--t3)}
+    .prog-wrap{background:var(--bg2);border-radius:20px;height:6px;margin-bottom:24px;overflow:hidden}
+    .prog-bar{height:100%;background:linear-gradient(90deg,var(--ac),#a78bfa);border-radius:20px;transition:width .4s;width:0}
+    .prog-info{display:flex;justify-content:space-between;font-size:.85rem;color:var(--t3);margin-bottom:8px}
+    .bottom{position:fixed;bottom:0;left:0;right:0;background:rgba(15,23,42,.95);backdrop-filter:blur(10px);border-top:1px solid var(--brd);padding:16px 24px;z-index:100}
+    .bottom-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .btn-sub{padding:12px 32px;background:linear-gradient(135deg,var(--ac),#6366f1);color:#fff;border:none;border-radius:var(--rs);font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 12px var(--acg)}
+    .btn-sub:hover{transform:translateY(-1px);box-shadow:0 6px 20px var(--acg)}
+    .btn-sub:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .ans-cnt{color:var(--t2);font-size:.9rem}.ans-cnt span{color:var(--ac);font-weight:700}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:200}
+    .overlay.active{display:flex}
+    .result{background:var(--bg2);border:1px solid var(--brd);border-radius:20px;padding:48px 32px;text-align:center;max-width:480px;width:90%;animation:su .3s ease}
+    @keyframes su{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .r-score{font-size:4rem;font-weight:800;background:linear-gradient(135deg,#22c55e,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:18px 0}
+    .r-label{font-size:1.1rem;color:var(--t2);margin-bottom:8px}
+    .r-detail{font-size:.95rem;color:var(--t3);margin-bottom:32px;line-height:1.6}
+    .r-actions{display:flex;gap:12px;justify-content:center}
+    .btn-rv{padding:11px 24px;background:var(--opt);border:1px solid var(--brd);color:var(--t1);border-radius:var(--rs);cursor:pointer;font-family:inherit;font-size:.95rem;transition:all .2s}
+    .btn-rv:hover{background:var(--opt-h)}
+    .btn-rt{padding:11px 24px;background:var(--ac);border:none;color:#fff;border-radius:var(--rs);cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:600;transition:all .2s}
+    .btn-rt:hover{background:var(--ac2)}
+    .loading{text-align:center;padding:80px;color:var(--t2);font-size:1.2rem}
+    .loading .spinner{width:48px;height:48px;border:4px solid var(--brd);border-top-color:var(--ac);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:600px){.file-grid{grid-template-columns:1fr}.picker h2{font-size:1.4rem}.header h1{font-size:1rem}.timer{font-size:1.1rem;padding:4px 8px}.q-card{padding:18px}.result{padding:32px 20px}.r-score{font-size:3.2rem}}
+  </style>
+</head>
+<body>
+  <div class="header" id="header" style="display:none">
+    <div class="header-inner">
+      <div><h1 id="hTitle">Ujian Online</h1><div class="sub" id="hSub"></div></div>
+      <div class="header-right">
+        <div class="timer" id="timer">00:00</div>
+        <button class="btn-back" onclick="goBack()">← Beranda</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="picker" id="picker">
+      <div class="icon">🏦</div>
+      <h2>Bank Soal Online</h2>
+      <p>Pilih mata pelajaran untuk ujian acak (12 PG + 5 B/S + 5 Isian)</p>
+      <div class="file-grid" id="grid"></div>
+    </div>
+    <div class="exam" id="exam">
+      <div class="exam-title" id="eTitle"></div>
+      <div class="exam-meta" id="eMeta"></div>
+      <div class="prog-info"><span id="pText">0 dari 0 dijawab</span><span id="pPct">0%</span></div>
+      <div class="prog-wrap"><div class="prog-bar" id="pBar"></div></div>
+      <div id="qCont"></div>
+    </div>
+  </div>
+  <div class="bottom" id="bottom" style="display:none">
+    <div class="bottom-inner">
+      <div class="ans-cnt">Terjawab: <span id="aCnt">0</span> / <span id="tCnt">0</span></div>
+      <button class="btn-sub" id="btnSub" onclick="submitExam()">Kumpulkan Jawaban</button>
+    </div>
+  </div>
+  <div class="overlay" id="overlay">
+    <div class="result">
+      <div class="r-label">Skor Ujian</div>
+      <div class="r-score" id="rScore">0</div>
+      <div class="r-detail" id="rDetail"></div>
+      <div class="r-actions">
+        <button class="btn-rv" onclick="review()">Lihat Jawaban</button>
+        <button class="btn-rt" onclick="goBack()">Ujian Lain</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+// ========== CONFIG: subject list ==========
+const SUBJECTS = [
+  { key:'bahasa_indonesia', file:'bank_bahasa_indonesia.md', emoji:'📖', name:'Bahasa Indonesia', desc:'Fabel, Antonim, Sifat, Sapaan' },
+  { key:'bahasa_inggris',   file:'bank_bahasa_inggris.md',   emoji:'🌍', name:'Bahasa Inggris',   desc:'Pronoun, Family, Adjective' },
+  { key:'matematika',       file:'bank_matematika.md',       emoji:'🔢', name:'Matematika',       desc:'Pecahan, Berat, Waktu, Jam' },
+  { key:'seni_rupa',        file:'bank_seni_rupa.md',        emoji:'🎨', name:'Seni Rupa',        desc:'Kolase, Teknik, Keselamatan' },
+  { key:'ipas',             file:'bank_ipas.md',             emoji:'🔬', name:'IPAS',             desc:'Identitas, Dokumen, Silsilah' }
+];
+
+// Randomization config
+const COUNTS = { choice: 15, truefalse: 5, text: 5 };
+
+// ========== STATE ==========
+let curQ=[], ans={}, timerI=null, startT=null, curKey=null;
+
+// ========== INIT ==========
+document.getElementById('grid').innerHTML = SUBJECTS.map(s =>
+  `<div class="file-card" onclick="loadBank('${s.key}')">
+    <span class="emoji">${s.emoji}</span>
+    <div class="name">${s.name}</div>
+    <div class="desc">${s.desc}</div>
+  </div>`
+).join('');
+
+// ========== LOAD BANK FILE ==========
+async function loadBank(key) {
+  const info = SUBJECTS.find(s => s.key === key);
+  if (!info) return;
+  curKey = key;
+
+  // Show loading
+  document.getElementById('picker').classList.add('hidden');
+  document.getElementById('exam').classList.add('active');
+  document.getElementById('header').style.display = '';
+  document.getElementById('hTitle').textContent = info.name;
+  document.getElementById('hSub').textContent = 'Mengacak soal...';
+  document.getElementById('qCont').innerHTML = '<div class="loading"><div class="spinner"></div>Merakit soal ujian...</div>';
+
+  try {
+    const resp = await fetch(info.file);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const md = await resp.text();
+    shuffleAndRender(md, info.name);
+  } catch (err) {
+    document.getElementById('qCont').innerHTML = `<div class="loading" style="color:var(--err)">❌ Gagal memuat bank soal: ${err.message}</div>`;
+  }
+}
+
+// ========== SHUFFLE & RENDER ==========
+function shuffleAndRender(md, subjName) {
+  const lines = md.split('\n');
+  let title='', meta=[], pool=[], curSecHeader='', curQn=null, gId=0;
+
+  // Phase 1: Parse ALL questions into a pool
+  for (const line of lines) {
+    const t = line.trim();
+    if (t.startsWith('# ') && !title) { title = t.replace(/^#+\s*/,''); continue; }
+    if (t.startsWith('## ') && meta.length < 2) { meta.push(t.replace(/^#+\s*/,'')); continue; }
+    if (t.startsWith('### ')) {
+      curSecHeader = t.replace(/^#+\s*/,'');
+      if (curQn) pool.push(curQn);
+      curQn = null; continue;
+    }
+    const genericCorrect = t.match(/<!--correct:?(.*?)-->/i);
+    const qm = t.replace(/<!--correct:?.*?-->/i,'').trim().match(/^(\d+)\.\s+(.+)/);
+    
+    if (qm) {
+      if (curQn) pool.push(curQn);
+      gId++;
+      curQn = { id: gId, text: qm[2], options: [], type: 'text', img: null, correct: null, sec: curSecHeader };
+      if (genericCorrect && genericCorrect[1]) curQn.correct = genericCorrect[1].trim();
+      continue;
+    }
+    if (curQn) {
+      const im = t.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
+      if (im) { curQn.img = { alt:im[1], src:im[2] }; continue; }
+      
+      const om = t.replace(/<!--correct:?.*?-->/i,'').trim().match(/^([a-d])\.\s+(.+)/);
+      if (om) {
+        curQn.options.push({ label:om[1], text:om[2] });
+        curQn.type = 'choice';
+        if (t.includes('<!--correct')) curQn.correct = om[1];
+        continue;
+      }
+      if (genericCorrect && genericCorrect[1] && !qm) curQn.correct = genericCorrect[1].trim();
+      if (t && !t.match(/^[a-d]\.\s/) && !curQn.options.length && !t.match(/<!--/)) curQn.text += ' ' + t;
+    }
+  }
+  if (curQn) pool.push(curQn);
+
+  // Identify type for all pooled questions
+  pool.forEach(q => {
+    const h = (q.sec||'').toLowerCase();
+    if (q.options.length) q.type = 'choice';
+    else if (h.includes('benar') || h.includes('true') || h.includes('b/s') || q.text.includes('(___)')) q.type = 'truefalse';
+    else q.type = 'text';
+  });
+
+  // Phase 2: Select random samples
+  const selected = [];
+  const types = ['choice', 'truefalse', 'text'];
+  
+  types.forEach(type => {
+    const candidates = pool.filter(q => q.type === type);
+    const count = COUNTS[type] || 5;
+    const shuffled = candidates.sort(() => 0.5 - Math.random());
+    selected.push(...shuffled.slice(0, count));
+  });
+
+  // Re-index questions 1-N
+  let reIndex = 1;
+  const finalSet = selected.map(q => {
+    return { ...q, displayNum: reIndex++ };
+  });
+
+  // Phase 3: Build HTML
+  document.getElementById('eTitle').textContent = 'Ujian Sumatif';
+  document.getElementById('eMeta').textContent = `Paket Acak • ${finalSet.length} Soal • STS Genap`;
+  document.getElementById('hSub').textContent = 'Pendidikan Kurikulum Merdeka';
+  document.getElementById('bottom').style.display = '';
+  
+  curQ = finalSet;
+  ans = {};
+  
+  let html = '';
+  let lastType = '';
+  const typeNames = { choice: 'Pilihan Ganda', truefalse: 'Benar atau Salah', text: 'Isian / Jawablah' };
+
+  finalSet.forEach(q => {
+    if (q.type !== lastType) {
+      html += `<div class="section-hdr">${typeNames[q.type]}</div>`;
+      lastType = q.type;
+    }
+    const qid = 'q'+q.displayNum;
+    const imgHtml = q.img ? `<img src="${q.img.src}" alt="${q.img.alt}" loading="lazy" onerror="this.style.display='none'">` : '';
+    const cleanText = q.text.replace(/\\_\\_\\_/g,'___').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\$([^$]+)\$/g,'<strong>$1</strong>');
+    
+    let ansHtml = '';
+    if (q.type === 'choice') {
+      ansHtml = '<div class="opts">' + q.options.map(o => `<div class="opt" data-q="${qid}" data-v="${o.label}" onclick="sel(this)"><div class="opt-r"></div><span class="opt-l">${o.label}.</span><span class="opt-t">${o.text}</span></div>`).join('') + '</div>';
+    } else if (q.type === 'truefalse') {
+      ansHtml = `<div class="opts">
+        <div class="opt" data-q="${qid}" data-v="B" onclick="sel(this)"><div class="opt-r"></div><span class="opt-l">B.</span><span class="opt-t">Benar</span></div>
+        <div class="opt" data-q="${qid}" data-v="S" onclick="sel(this)"><div class="opt-r"></div><span class="opt-l">S.</span><span class="opt-t">Salah</span></div>
+      </div>`;
+    } else {
+      ansHtml = `<input type="text" class="text-ans" data-q="${qid}" placeholder="Tulis jawaban..." oninput="tinp(this)">`;
+    }
+    
+    html += `<div class="q-card" id="c-${qid}"><div class="q-num">Soal ${q.displayNum}</div><div class="q-text">${cleanText}${imgHtml}</div>${ansHtml}</div>`;
+  });
+
+  document.getElementById('qCont').innerHTML = html;
+  document.getElementById('tCnt').textContent = curQ.length;
+  uprog();
+  
+  startT = Date.now();
+  clearInterval(timerI);
+  timerI = setInterval(() => {
+    const elapsed = Math.floor((Date.now()-startT)/1000);
+    document.getElementById('timer').textContent = String(Math.floor(elapsed/60)).padStart(2,'0')+':'+String(elapsed%60).padStart(2,'0');
+  }, 1000);
+}
+
+// ========== INTERACTIONS ==========
+function sel(el) {
+  el.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  ans[el.dataset.q] = el.dataset.v;
+  document.getElementById('c-'+el.dataset.q).classList.add('answered');
+  uprog();
+}
+function tinp(el) {
+  const val = el.value.trim();
+  if (val) { ans[el.dataset.q]=val; document.getElementById('c-'+el.dataset.q).classList.add('answered'); }
+  else { delete ans[el.dataset.q]; document.getElementById('c-'+el.dataset.q).classList.remove('answered'); }
+  uprog();
+}
+function uprog() {
+  const total=curQ.length, answered=Object.keys(ans).length, p=total?Math.round(answered/total*100):0;
+  document.getElementById('aCnt').textContent = answered;
+  document.getElementById('pText').textContent = `${answered} dari ${total} dijawab`;
+  document.getElementById('pPct').textContent = p+'%';
+  document.getElementById('pBar').style.width = p+'%';
+}
+
+// ========== SUBMIT & GRADE ==========
+function submitExam() {
+  const total=curQ.length, answered=Object.keys(ans).length;
+  if (answered<total && !confirm(`Baru ${answered} dari ${total} soal dijawab. Kumpulkan sekarang?`)) return;
+  
+  clearInterval(timerI);
+  const elapsed = Math.floor((Date.now()-startT)/1000);
+  let scorePoints=0, gradableTotal=0;
+
+  curQ.forEach(q => {
+    const qid='q'+q.displayNum, card=document.getElementById('c-'+qid);
+    const userAns=ans[qid], correctAns=q.correct;
+    card.classList.add('submitted');
+
+    if (q.type==='text') {
+      if (correctAns) addCorrectLabel(card, correctAns);
+      return; 
+    }
+    
+    gradableTotal++;
+    if (!userAns) {
+      card.classList.add('unanswered');
+      if (correctAns) { addCorrectLabel(card, correctAns); addBadge(card,'incorrect-badge','Tidak Dijawab'); }
+    } else if (correctAns && userAns.toLowerCase() === correctAns.toLowerCase()) {
+      scorePoints++;
+      card.classList.add('correct');
+      addBadge(card,'correct-badge','✓ Benar');
+      card.querySelectorAll('.opt').forEach(o => { if(o.dataset.v.toLowerCase()===correctAns.toLowerCase()) o.classList.add('correct-opt'); });
+    } else if (correctAns) {
+      card.classList.add('incorrect');
+      addBadge(card,'incorrect-badge','✗ Salah');
+      card.querySelectorAll('.opt').forEach(o => {
+        if(o.dataset.v.toLowerCase()===userAns.toLowerCase()) o.classList.add('wrong-opt');
+        if(o.dataset.v.toLowerCase()===correctAns.toLowerCase()) o.classList.add('correct-opt');
+      });
+      addCorrectLabel(card, correctAns);
+    }
+  });
+
+  const finalScore = gradableTotal > 0 ? Math.round((scorePoints/gradableTotal)*100) : 0;
+  document.getElementById('rScore').textContent = finalScore;
+  document.getElementById('rDetail').innerHTML = `
+    Skor PG & B/S: <strong>${finalScore}</strong><br>
+    Benar: ${scorePoints} / ${gradableTotal}<br>
+    Waktu: ${Math.floor(elapsed/60)}m ${elapsed%60}s<br>
+    <div style="margin-top:10px;font-size:.8rem;color:var(--t3)">Soal isian harap diperiksa manual</div>
+  `;
+  document.getElementById('overlay').classList.add('active');
+  document.getElementById('btnSub').disabled = true;
+  document.getElementById('btnSub').textContent = 'Tersimpan ✓';
+}
+
+function addBadge(card,cls,text) {
+  const b=document.createElement('span'); b.className=cls; b.textContent=text;
+  card.querySelector('.q-num').appendChild(b);
+}
+function addCorrectLabel(card,val) {
+  const lbls={a:'A',b:'B',c:'C',d:'D',B:'Benar',S:'Salah'};
+  const div=document.createElement('div'); div.className='correct-answer-text';
+  div.textContent='Jawaban benar: '+(lbls[val]||val); card.appendChild(div);
+}
+
+// ========== NAV ==========
+function review() { document.getElementById('overlay').classList.remove('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+function goBack() {
+  if (curQ.length > 0 && document.getElementById('btnSub').disabled === false) {
+    if (!confirm('Batalkan ujian ini dan kembali ke menu?')) return;
+  }
+  clearInterval(timerI); curQ=[]; ans={};
+  document.getElementById('exam').classList.remove('active');
+  document.getElementById('picker').classList.remove('hidden');
+  document.getElementById('header').style.display='none';
+  document.getElementById('bottom').style.display='none';
+  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('qCont').innerHTML='';
+  document.getElementById('btnSub').disabled=false;
+  document.getElementById('btnSub').textContent='Kumpulkan Jawaban';
+}
+</script>
+</body>
+</html>
