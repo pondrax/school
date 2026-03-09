@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kisi-Kisi STS Genap - Kelas 2</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f172a;
+        --bg2: #1e293b;
+        --bg3: #263549;
+        --opt: #2a3a50;
+        --opt-h: #334561;
+        --t1: #f1f5f9;
+        --t2: #94a3b8;
+        --t3: #64748b;
+        --ac: #3b82f6;
+        --ac2: #2563eb;
+        --acg: rgba(59, 130, 246, 0.3);
+        --ok: #22c55e;
+        --brd: #334155;
+        --r: 12px;
+        --rs: 8px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--t1);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      /* ===== HEADER ===== */
+      .header {
+        background: linear-gradient(135deg, #1e3a5f, #0f172a);
+        border-bottom: 1px solid var(--brd);
+        padding: 16px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+      }
+      .header-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header h1 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .header .sub {
+        font-size: 0.78rem;
+        color: var(--t3);
+        margin-top: 2px;
+      }
+      .btn-home {
+        background: 0 0;
+        border: 1px solid var(--brd);
+        color: var(--t2);
+        padding: 7px 14px;
+        border-radius: var(--rs);
+        cursor: pointer;
+        font-size: 0.83rem;
+        font-family: inherit;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-home:hover {
+        background: var(--opt);
+        color: var(--t1);
+      }
+
+      /* ===== CONTAINER ===== */
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 28px 24px 80px;
+      }
+
+      /* ===== PICKER VIEW ===== */
+      .picker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        text-align: center;
+      }
+      .picker.hidden {
+        display: none;
+      }
+      .picker .icon {
+        font-size: 3.5rem;
+        margin-bottom: 12px;
+      }
+      .picker h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+        background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .picker p {
+        color: var(--t2);
+        margin-bottom: 36px;
+        font-size: 1rem;
+      }
+      .file-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        width: 100%;
+        max-width: 960px;
+      }
+      .file-card {
+        background: var(--bg2);
+        border: 1px solid var(--brd);
+        border-radius: var(--r);
+        padding: 26px;
+        cursor: pointer;
+        transition: all 0.25s;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+      }
+      .file-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--ac), #a78bfa);
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .file-card:hover {
+        background: var(--bg3);
+        border-color: var(--ac);
+        transform: translateY(-2px);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.4),
+          0 0 20px var(--acg);
+      }
+      .file-card:hover::before {
+        opacity: 1;
+      }
+      .file-card .emoji {
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 12px;
+      }
+      .file-card .name {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+      .file-card .desc {
+        font-size: 0.85rem;
+        color: var(--t3);
+      }
+
+      /* ===== PREVIEW VIEW ===== */
+      .preview {
+        display: none;
+      }
+      .preview.active {
+        display: block;
+        animation: fadeUp 0.3s ease;
+      }
+      @keyframes fadeUp {
+        from {
+          transform: translateY(16px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .preview-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .preview-header .emoji {
+        font-size: 2.5rem;
+      }
+      .preview-header h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--t1);
+      }
+      .preview-header .meta {
+        font-size: 0.88rem;
+        color: var(--t2);
+        margin-top: 2px;
+      }
+      .btn-back-preview {
+        margin-left: auto;
+        background: 0 0;
+        border: 1px solid var(--brd);
+        color: var(--t2);
+        padding: 9px 18px;
+        border-radius: var(--rs);
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-family: inherit;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-back-preview:hover {
+        background: var(--opt);
+        color: var(--t1);
+      }
+
+      /* ===== TABLE STYLING ===== */
+      .kisi-section {
+        margin-bottom: 28px;
+      }
+      .kisi-section h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        padding: 12px 18px;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.15),
+          rgba(167, 139, 250, 0.15)
+        );
+        border-left: 4px solid var(--ac);
+        border-radius: 0 var(--rs) var(--rs) 0;
+        color: #93c5fd;
+      }
+      .kisi-table-wrap {
+        overflow-x: auto;
+        border-radius: var(--r);
+        border: 1px solid var(--brd);
+        background: var(--bg2);
+      }
+      .kisi-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+      .kisi-table thead th {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.12));
+        padding: 13px 16px;
+        text-align: left;
+        font-weight: 600;
+        color: #93c5fd;
+        border-bottom: 2px solid var(--brd);
+        white-space: nowrap;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .kisi-table tbody td {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+        color: var(--t2);
+        vertical-align: top;
+      }
+      .kisi-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .kisi-table tbody tr:hover {
+        background: rgba(59, 130, 246, 0.05);
+      }
+      .kisi-table tbody td:first-child {
+        color: var(--ac);
+        font-weight: 600;
+        text-align: center;
+        min-width: 44px;
+      }
+      .kisi-table tbody td:nth-child(4) {
+        white-space: nowrap;
+      }
+      .kisi-table tbody td:nth-child(5) {
+        text-align: center;
+        font-weight: 600;
+        color: var(--t3);
+      }
+      .badge-pg {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+      }
+      .badge-bs {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        background: rgba(168, 85, 247, 0.15);
+        color: #c084fc;
+      }
+      .badge-isian {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        background: rgba(34, 197, 94, 0.15);
+        color: #4ade80;
+      }
+
+      /* ===== LOADING ===== */
+      .loading {
+        text-align: center;
+        padding: 80px;
+        color: var(--t2);
+        font-size: 1.1rem;
+      }
+      .loading .spinner {
+        width: 42px;
+        height: 42px;
+        border: 4px solid var(--brd);
+        border-top-color: var(--ac);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 0 auto 18px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 600px) {
+        .file-grid {
+          grid-template-columns: 1fr;
+        }
+        .picker h2 {
+          font-size: 1.4rem;
+        }
+        .header h1 {
+          font-size: 1rem;
+        }
+        .preview-header {
+          flex-wrap: wrap;
+        }
+        .btn-back-preview {
+          margin-left: 0;
+          width: 100%;
+          justify-content: center;
+        }
+        .kisi-table {
+          font-size: 0.82rem;
+        }
+        .kisi-table thead th,
+        .kisi-table tbody td {
+          padding: 10px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-inner">
+        <div>
+          <h1>Kisi-Kisi Soal STS</h1>
+          <div class="sub">Sumatif Tengah Semester Genap — Kelas II</div>
+        </div>
+        <a href="/" class="btn-home">📝 Bank Soal</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="picker" id="picker">
+        <div class="icon">📋</div>
+        <h2>Kisi-Kisi Soal</h2>
+        <p>Pilih mata pelajaran untuk melihat kisi-kisi STS Genap</p>
+        <div class="file-grid" id="grid"></div>
+      </div>
+
+      <div class="preview" id="preview">
+        <div class="preview-header" id="previewHeader"></div>
+        <div id="previewContent"></div>
+      </div>
+    </div>
+
+    <script>
+      const KISI = [
+        {
+          key: "bahasa_indonesia",
+          file: "kisi_bahasa_indonesia.md",
+          emoji: "📖",
+          name: "Bahasa Indonesia",
+          desc: "Fabel, Antonim, Sifat, Sapaan",
+        },
+        {
+          key: "bahasa_inggris",
+          file: "kisi_bahasa_inggris.md",
+          emoji: "🌍",
+          name: "Bahasa Inggris",
+          desc: "Pronoun, Family, Adjective",
+        },
+        {
+          key: "matematika",
+          file: "kisi_matematika.md",
+          emoji: "🔢",
+          name: "Matematika",
+          desc: "Pecahan, Berat, Waktu, Jam",
+        },
+        {
+          key: "seni_rupa",
+          file: "kisi_seni_rupa.md",
+          emoji: "🎨",
+          name: "Seni Rupa",
+          desc: "Kolase, Teknik, Keselamatan",
+        },
+        {
+          key: "ipas",
+          file: "kisi_ipas.md",
+          emoji: "🔬",
+          name: "IPAS",
+          desc: "Identitas, Dokumen, Silsilah",
+        },
+        {
+          key: "pancasila",
+          file: "kisi_pancasila.md",
+          emoji: "🇮🇩",
+          name: "Pancasila",
+          desc: "Identitas, Toleransi, Keberagaman",
+        },
+        {
+          key: "aqidah_akhlak",
+          file: "kisi_aqidah_akhlak.md",
+          emoji: "🕌",
+          name: "Aqidah Akhlak",
+          desc: "Adab Bersin, Menguap, Rajin Belajar",
+        },
+        {
+          key: "fiqih",
+          file: "kisi_fiqih.md",
+          emoji: "🤲",
+          name: "Fiqih",
+          desc: "Salat Berjamaah, Imam, Makmum",
+        },
+        {
+          key: "qurdits",
+          file: "kisi_qurdits.md",
+          emoji: "📗",
+          name: "Al-Qur'an Hadits",
+          desc: "Al-Kafirun, Tajwid, Alif Lam",
+        },
+      ];
+
+      // Render grid
+      document.getElementById("grid").innerHTML = KISI.map(
+        (k) =>
+          `<div class="file-card" onclick="loadKisi('${k.key}')">
+            <span class="emoji">${k.emoji}</span>
+            <div class="name">${k.name}</div>
+            <div class="desc">${k.desc}</div>
+          </div>`,
+      ).join("");
+
+      async function loadKisi(key) {
+        const info = KISI.find((k) => k.key === key);
+        if (!info) return;
+
+        document.getElementById("picker").classList.add("hidden");
+        const preview = document.getElementById("preview");
+        preview.classList.add("active");
+
+        document.getElementById("previewHeader").innerHTML = `
+          <span class="emoji">${info.emoji}</span>
+          <div>
+            <h2>${info.name}</h2>
+            <div class="meta">Kisi-Kisi STS Genap — MI Al-Azhar Kelas II</div>
+          </div>
+          <button class="btn-back-preview" onclick="backToPicker()">← Kembali</button>
+        `;
+
+        document.getElementById("previewContent").innerHTML =
+          '<div class="loading"><div class="spinner"></div>Memuat kisi-kisi...</div>';
+
+        try {
+          const resp = await fetch("/kisi-kisi/" + info.file);
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          const md = await resp.text();
+          renderKisi(md, info);
+        } catch (err) {
+          document.getElementById("previewContent").innerHTML =
+            `<div class="loading" style="color:#ef4444">❌ Gagal memuat: ${err.message}</div>`;
+        }
+      }
+
+      function renderKisi(md, info) {
+        const lines = md.split("\n").filter((l) => l.trim());
+        let html = "";
+        let currentRows = [];
+        let sectionCount = 0;
+        const sectionNames = ["A. Pilihan Ganda", "B. Benar / Salah", "C. Isian"];
+        const sectionBadges = ["badge-pg", "badge-bs", "badge-isian"];
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+
+          // Skip title/meta lines
+          if (trimmed.startsWith("# ") || trimmed.startsWith("**")) continue;
+
+          // Table row
+          if (trimmed.startsWith("|")) {
+            const cells = trimmed
+              .split("|")
+              .slice(1, -1)
+              .map((c) => c.trim());
+
+            // Skip separator rows
+            if (cells.every((c) => /^-+$/.test(c))) continue;
+
+            // Detect header row (starts new section)
+            if (cells[0] === "No") {
+              // Flush previous section
+              if (currentRows.length > 0) {
+                html += buildTable(currentRows, sectionNames[sectionCount], sectionBadges[sectionCount]);
+                sectionCount++;
+                currentRows = [];
+              } else if (sectionCount === 0) {
+                // First header, just continue
+              }
+              continue;
+            }
+
+            currentRows.push(cells);
+          }
+        }
+
+        // Flush last section
+        if (currentRows.length > 0) {
+          html += buildTable(currentRows, sectionNames[sectionCount] || "Soal", sectionBadges[sectionCount] || "badge-pg");
+        }
+
+        document.getElementById("previewContent").innerHTML = html;
+      }
+
+      function buildTable(rows, sectionName, badgeClass) {
+        let html = `<div class="kisi-section">
+          <h3>${sectionName}</h3>
+          <div class="kisi-table-wrap">
+            <table class="kisi-table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Materi</th>
+                  <th>Indikator Soal</th>
+                  <th>Bentuk Soal</th>
+                  <th>No. Soal</th>
+                </tr>
+              </thead>
+              <tbody>`;
+
+        rows.forEach((cells) => {
+          const bentuk = (cells[3] || "").trim();
+          let badge = `<span class="${badgeClass}">${bentuk}</span>`;
+          html += `<tr>
+            <td>${cells[0] || ""}</td>
+            <td>${cells[1] || ""}</td>
+            <td>${cells[2] || ""}</td>
+            <td>${badge}</td>
+            <td>${cells[4] || ""}</td>
+          </tr>`;
+        });
+
+        html += `</tbody></table></div></div>`;
+        return html;
+      }
+
+      function backToPicker() {
+        document.getElementById("preview").classList.remove("active");
+        document.getElementById("picker").classList.remove("hidden");
+        document.getElementById("previewContent").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>

@@ -101,6 +101,26 @@
         background: var(--opt);
         color: var(--t1);
       }
+      .btn-header-alt {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(167, 139, 250, 0.1));
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        color: #93c5fd;
+        padding: 7px 14px;
+        border-radius: var(--rs);
+        cursor: pointer;
+        font-size: 0.83rem;
+        font-family: inherit;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-header-alt:hover {
+        background: rgba(59, 130, 246, 0.2);
+        border-color: var(--ac);
+        color: #fff;
+      }
       .container {
         max-width: 900px;
         margin: 0 auto;
@@ -599,6 +619,7 @@
           <div class="sub" id="hSub"></div>
         </div>
         <div class="header-right">
+          <a href="/kisi-kisi/" class="btn-header-alt">📋 Kisi-Kisi</a>
           <div class="timer" id="timer">00:00</div>
           <button class="btn-back" onclick="goBack()">← Beranda</button>
         </div>
@@ -747,7 +768,7 @@
           '<div class="loading"><div class="spinner"></div>Merakit soal ujian...</div>';
 
         try {
-          const resp = await fetch(info.file);
+          const resp = await fetch("/soal/" + info.file);
           if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
           const md = await resp.text();
           shuffleAndRender(md, info.name);
