@@ -234,3 +234,129 @@ Isilah dengan jawaban yang benar!
 23. Pesawat terbang lepas landas di ... <!--correct:Mathar / Bandara / مَطَارٌ-->
 24. Pisahkan huruf dari kata "مَطَارٌ" ... <!--correct:م - ط - ا - ر-->
 25. "سَيَّارَةٌ" dalam bahasa Indonesia artinya ... <!--correct:Mobil-->
+
+### A. Pilihan Ganda (Multiple Choice)
+Pilihlah jawaban yang paling tepat!
+
+1. Perhatikan gambar berikut!
+   ![Mobil](assets/car.png)
+   Bahasa Arab yang tepat untuk gambar tersebut adalah ...
+   a. سَيَّارَةٌ <!--correct-->
+   b. طَائِرَةٌ
+   c. سَفِيْنَةٌ
+   d. قِطَارٌ
+
+2. Perhatikan gambar berikut!
+   ![Bus](assets/bus.png)
+   Bahasa Arab dari kendaraan tersebut adalah ...
+   a. حَافِلَةٌ <!--correct-->
+   b. جَوَّالَةٌ
+   c. دَرَّاجَةٌ
+   d. عَرَبَةٌ
+
+3. Perhatikan gambar berikut!
+   ![Sepeda](assets/bicycle.png)
+   Kata bahasa Arab yang sesuai dengan gambar adalah ...
+   a. دَرَّاجَةٌ <!--correct-->
+   b. سَيَّارَةٌ
+   c. حَافِلَةٌ
+   d. طَائِرَةٌ
+
+4. Bahasa Arab dari "Pesawat Terbang" adalah ...
+   a. طَائِرَةٌ <!--correct-->
+   b. سَفِيْنَةٌ
+   c. قِطَارٌ
+   d. جَوَّالَةٌ
+
+5. "سَفِيْنَةٌ" adalah alat transportasi yang digunakan di ...
+   a. Laut/Air <!--correct-->
+   b. Udara
+   c. Darat
+   d. Rel
+
+6. Perhatikan gambar berikut!
+   ![Kereta Api](assets/train.png)
+   Bahasa Arab dari benda tersebut adalah ...
+   a. قِطَارٌ <!--correct-->
+   b. حَافِلَةٌ
+   c. مَطَارٌ
+   d. سَيَّارَةٌ
+
+7. Jika huruf س - ف - ي - ن - ة disambung menjadi ...
+   a. سَفِيْنَةٌ <!--correct-->
+   b. سَفِيْنَتُ
+   c. سُفُنٌ
+   d. سِيْفَنَةُ
+
+8. Huruf-huruf dari kata "دَرَّاجَةٌ" jika dipisah adalah ...
+   a. د - ر - ا - ج - ة <!--correct-->
+   b. د - ر - ج
+   c. د - ر - ا - ج
+   d. د - ا - ر - ج - ة
+
+9. "Alat transportasi" dalam bahasa Arab disebut ...
+   a. وَسَائِلُ المُواصَلَاتِ <!--correct-->
+   b. المَدْرَسَةُ
+   c. البَيْتُ
+   d. المَسْجِدُ
+
+10. Tempat pemberhentian pesawat terbang (Bandara) disebut ...
+    a. مَطَارٌ <!--correct-->
+    b. مَحَطَّةٌ
+    c. مِيْنَاءٌ
+    d. مَوْقِفٌ
+
+11. Kapal laut (سَفِيْنَةٌ) berhenti di ...
+    a. مِيْنَاءٌ (Pelabuhan) <!--correct-->
+    b. مَطَارٌ
+    c. مَحَطَّةٌ
+    d. مَوْقِفٌ
+
+12. Huruf-huruf dari kata "مِرْوَحِيَّةٌ" (Helikopter) jika dipisah adalah ...
+    a. م - ر - و - ح - ي - ة <!--correct-->
+    b. م - ر - ح
+    c. م - و - ح - ي - ة
+    d. م - ر - و - ج - ة
+
+13. Perhatikan gambar berikut!
+    ![Delman](assets/carriage.png)
+    Bahasa Arab yang tepat adalah ...
+    a. عَرَبَةٌ <!--correct-->
+    b. حَافِلَةٌ
+    c. دَرَّاجَةٌ
+    d. جَوَّالَةٌ
+
+14. Bahasa Arab dari "Motor" yang tepat adalah ...
+    a. جَوَّالَةٌ <!--correct-->
+    b. دَرَّاجَةٌ
+    c. سَيَّارَةٌ
+    d. طَائِرَةٌ
+
+15. Perhatikan gambar berikut!
+    ![Motor](assets/motorcycle.png)
+    Kata bahasa Arab untuk gambar tersebut adalah ...
+    a. جَوَّالَةٌ <!--correct-->
+    b. حَافِلَةٌ
+    c. سَفِيْنَةٌ
+    d. قِطَارٌ
+
+### B. Benar atau Salah
+Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
+
+16. "حَافِلَةٌ" artinya adalah bus. (___) <!--correct:B-->
+17. "مَطَارٌ" adalah sebutan untuk stasiun kereta api. (___) <!--correct:S-->
+18. Sepeda (دَرَّاجَةٌ) memiliki dua roda. (___) <!--correct:B-->
+19. Kapal laut (سَفِيْنَةٌ) termasuk transportasi udara. (___) <!--correct:S-->
+20. "مِرْوَحِيَّةٌ" adalah bahasa Arab untuk helikopter. (___) <!--correct:B-->
+
+### C. Isian
+Isilah dengan jawaban yang benar!
+
+21. Bahasa Arab dari "Mobil" adalah ... <!--correct:سَيَّارَةٌ / Sayyaratun-->
+22. Perhatikan gambar berikut!
+    ![Bus](assets/bus.png)
+    Bahasa Arab dari gambar di atas adalah ... <!--correct:Hafilatun / حَافِلَةٌ-->
+23. Sambungan huruf ط - ا - ئ - ر - ة menjadi kata ... <!--correct:طَائِرَةٌ / Tha'iratun-->
+24. Pisahkan huruf dari kata "قِطَارٌ" ... <!--correct:ق - ط - ا - ر-->
+25. "مِيْنَاءٌ" dalam bahasa Indonesia artinya ... <!--correct:Pelabuhan-->
+
