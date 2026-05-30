@@ -255,7 +255,7 @@ Pilihlah jawaban yang paling tepat!
    d. عَرَبَةٌ
 
 3. Perhatikan gambar berikut!
-   ![Sepeda](assets/bicycle.png)
+   ![Sepeda](assets/bicycle.svg)
    Kata bahasa Arab yang sesuai dengan gambar adalah ...
    a. دَرَّاجَةٌ <!--correct-->
    b. سَيَّارَةٌ
@@ -319,7 +319,7 @@ Pilihlah jawaban yang paling tepat!
     d. م - ر - و - ج - ة
 
 13. Perhatikan gambar berikut!
-    ![Delman](assets/carriage.png)
+    ![Delman](assets/carriage.svg)
     Bahasa Arab yang tepat adalah ...
     a. عَرَبَةٌ <!--correct-->
     b. حَافِلَةٌ

@@ -226,6 +226,41 @@
         font-size: 0.9rem;
         margin-bottom: 28px;
       }
+      .type-selector {
+        margin-bottom: 28px;
+        width: 100%;
+        max-width: 400px;
+      }
+      .sel-type {
+        width: 100%;
+        padding: 12px 16px;
+        background: var(--bg2);
+        border: 1px solid var(--brd);
+        border-radius: var(--rs);
+        color: var(--t1);
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        outline: none;
+        transition: border-color 0.2s;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M6 8L0 0h12z' fill='%2394a3b8'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 40px;
+      }
+      .sel-type:hover {
+        border-color: var(--ac);
+      }
+      .sel-type:focus {
+        border-color: var(--ac);
+        box-shadow: 0 0 0 3px var(--acg);
+      }
+      .sel-type option {
+        background: var(--bg2);
+        color: var(--t1);
+      }
       .section-hdr {
         font-size: 1.15rem;
         font-weight: 700;
@@ -261,7 +296,12 @@
       }
       .q-card.unanswered {
         border-color: var(--err) !important;
-        opacity: 0.7;
+        background: linear-gradient(135deg, var(--errbg) 0%, transparent 40%);
+        border-left: 4px solid var(--err);
+      }
+      .q-card.unanswered .q-num::after {
+        content: " ⚠";
+        color: var(--err);
       }
       .correct-badge,
       .incorrect-badge {
@@ -619,7 +659,7 @@
           <div class="sub" id="hSub"></div>
         </div>
         <div class="header-right">
-          <a href="/kisi-kisi/" class="btn-header-alt">📋 Kisi-Kisi</a>
+          <a href="/kisi/" class="btn-header-alt">📋 Kisi-Kisi</a>
           <div class="timer" id="timer">00:00</div>
           <button class="btn-back" onclick="goBack()">← Beranda</button>
         </div>
@@ -629,7 +669,10 @@
       <div class="picker" id="picker">
         <div class="icon">🏦</div>
         <h2>Bank Soal Online</h2>
-        <p>Pilih mata pelajaran untuk ujian acak (12 PG + 5 B/S + 5 Isian)</p>
+        <p>Pilih mata pelajaran untuk ujian acak</p>
+        <div class="type-selector">
+          <select id="typeSelect" onchange="switchType(this.value)" class="sel-type"></select>
+        </div>
         <div class="file-grid" id="grid"></div>
       </div>
       <div class="exam" id="exam">
@@ -669,85 +712,101 @@
       const SUBJECTS = [
         {
           key: "bahasa_indonesia",
-          file: "bank_bahasa_indonesia.md",
           emoji: "📖",
           name: "Bahasa Indonesia",
           desc: "Fabel, Antonim, Sifat, Sapaan",
         },
         {
           key: "bahasa_inggris",
-          file: "bank_bahasa_inggris.md",
           emoji: "🌍",
           name: "Bahasa Inggris",
           desc: "Pronoun, Family, Adjective",
         },
         {
           key: "matematika",
-          file: "bank_matematika.md",
           emoji: "🔢",
           name: "Matematika",
           desc: "Pecahan, Berat, Waktu, Jam",
         },
         {
           key: "seni_rupa",
-          file: "bank_seni_rupa.md",
           emoji: "🎨",
           name: "Seni Rupa",
           desc: "Kolase, Teknik, Keselamatan",
         },
         {
           key: "ipas",
-          file: "bank_ipas.md",
           emoji: "🔬",
           name: "IPAS",
           desc: "Identitas, Dokumen, Silsilah",
         },
         {
           key: "pancasila",
-          file: "bank_pancasila.md",
           emoji: "🇮🇩",
           name: "Pancasila",
           desc: "Identitas, Toleransi, Keberagaman",
         },
         {
           key: "aqidah_akhlak",
-          file: "bank_aqidah_akhlak.md",
           emoji: "🕌",
           name: "Aqidah Akhlak",
           desc: "Adab Bersin, Menguap, Rajin Belajar",
         },
         {
           key: "fiqih",
-          file: "bank_fiqih.md",
           emoji: "🤲",
           name: "Fiqih",
           desc: "Salat Berjamaah, Imam, Makmum",
         },
         {
           key: "qurdits",
-          file: "bank_qurdits.md",
           emoji: "📗",
           name: "Al-Qur'an Hadits",
           desc: "Al-Kafirun, Tajwid, Alif Lam",
         },
         {
           key: "bahasa_arab",
-          file: "bank_bahasa_arab.md",
           emoji: "🇸🇦",
           name: "Bahasa Arab",
           desc: "Alat Transportasi, Harf Hijaiyah",
         },
         {
           key: "bahasa_jawa",
-          file: "bank_bahasa_jawa.md",
           emoji: "🎭",
           name: "Bahasa Jawa",
           desc: "Reresik Omah, Cathetan Padinan, Basa Krama",
         },
       ];
 
-      // Randomization config
-      const COUNTS = { choice: 15, truefalse: 5, text: 5 };
+      // ========== EXAM TYPE CONFIG ==========
+      const EXAM_TYPES = [
+        {
+          id: "sts",
+          label: "📘 Kelas 2 — STS Genap (Tengah Semester)",
+          shortLabel: "Kelas 2 — STS Genap",
+          basePath: "/soal/kelas-2/sts/",
+          filePrefix: "bank_",
+          counts: { choice: 15, truefalse: 5, text: 5 },
+        },
+        {
+          id: "sat",
+          label: "📕 Kelas 2 — SAT Genap (Akhir Tahun)",
+          shortLabel: "Kelas 2 — SAT Genap",
+          basePath: "/soal/kelas-2/sat/",
+          filePrefix: "sat_",
+          counts: { choice: 15, truefalse: 5, text: 10 },
+        },
+      ];
+
+      let selectedType = localStorage.getItem("examType") || EXAM_TYPES[0].id;
+
+      function getExamType(id) {
+        return EXAM_TYPES.find((t) => t.id === id) || EXAM_TYPES[0];
+      }
+      function getCurrentType() { return getExamType(selectedType); }
+      function getCounts() { return getCurrentType().counts; }
+      function getBasePath() { return getCurrentType().basePath; }
+      function getFilePrefix() { return getCurrentType().filePrefix; }
 
       // ========== STATE ==========
       let curQ = [],
@@ -756,21 +815,41 @@
         startT = null,
         curKey = null;
 
+      const STATE_KEY = () => "exam_" + curKey + "_" + selectedType;
+
       // ========== INIT ==========
-      document.getElementById("grid").innerHTML = SUBJECTS.map(
-        (s) =>
-          `<div class="file-card" onclick="loadBank('${s.key}')">
+      function populateTypeSelect() {
+        const sel = document.getElementById("typeSelect");
+        sel.innerHTML = EXAM_TYPES.map(
+          (t) =>
+            `<option value="${t.id}"${t.id === selectedType ? " selected" : ""}>${t.label}</option>`,
+        ).join("");
+      }
+      function renderGrid() {
+        document.getElementById("grid").innerHTML = SUBJECTS.map(
+          (s) =>
+            `<div class="file-card" onclick="loadBank('${s.key}')">
     <span class="emoji">${s.emoji}</span>
     <div class="name">${s.name}</div>
     <div class="desc">${s.desc}</div>
   </div>`,
-      ).join("");
+        ).join("");
+      }
+      populateTypeSelect();
+      renderGrid();
+
+      function switchType(val) {
+        selectedType = val;
+        localStorage.setItem("examType", val);
+        renderGrid();
+      }
 
       // ========== LOAD BANK FILE ==========
       async function loadBank(key) {
         const info = SUBJECTS.find((s) => s.key === key);
         if (!info) return;
         curKey = key;
+        clearState();
 
         // Show loading
         document.getElementById("picker").classList.add("hidden");
@@ -782,7 +861,13 @@
           '<div class="loading"><div class="spinner"></div>Merakit soal ujian...</div>';
 
         try {
-          const resp = await fetch("/soal/" + info.file);
+          // Try restoring saved state first
+          const saved = loadState();
+          if (saved && saved.curQ && saved.curQ.length) {
+            restoreExam(saved, info);
+            return;
+          }
+          const resp = await fetch(getBasePath() + getFilePrefix() + key + ".md");
           if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
           const md = await resp.text();
           shuffleAndRender(md, info.name);
@@ -790,6 +875,70 @@
           document.getElementById("qCont").innerHTML =
             `<div class="loading" style="color:var(--err)">❌ Gagal memuat bank soal: ${err.message}</div>`;
         }
+      }
+
+      // ========== RESTORE SAVED EXAM ==========
+      function restoreExam(saved, info) {
+        curQ = saved.curQ;
+        ans = saved.ans;
+        const typeCfg = getCurrentType();
+        document.getElementById("eTitle").textContent = "Ujian Sumatif";
+        document.getElementById("eMeta").textContent =
+          `Paket Acak • ${curQ.length} Soal • ${typeCfg.shortLabel}`;
+        document.getElementById("hSub").textContent = "Pendidikan Kurikulum Merdeka";
+        document.getElementById("bottom").style.display = "";
+        document.getElementById("hTitle").textContent = info.name;
+
+        let html = "";
+        let lastType = "";
+        const typeNames = { choice: "Pilihan Ganda", truefalse: "Benar atau Salah", text: "Isian / Jawablah" };
+
+        curQ.forEach((q) => {
+          if (q.type !== lastType) {
+            html += `<div class="section-hdr">${typeNames[q.type]}</div>`;
+            lastType = q.type;
+          }
+          const qid = "q" + q.displayNum;
+          const imgHtml = q.img
+            ? `<img src="${q.img.src}" alt="${q.img.alt}" loading="lazy" onerror="this.style.display='none'">`
+            : "";
+          const cleanText = (q.text || "")
+            .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+            .replace(/\$([^$]+)\$/g, "<strong>$1</strong>");
+
+          let ansHtml = "";
+          if (q.type === "choice") {
+            ansHtml = '<div class="opts">' +
+              q.options.map((o) => {
+                const selClass = ans[qid] === o.label ? ' sel' : '';
+                return `<div class="opt${selClass}" data-q="${qid}" data-v="${o.label}" onclick="sel(this)"><div class="opt-r"></div><span class="opt-l">${o.label}.</span><span class="opt-t">${o.text}</span></div>`;
+              }).join("") + "</div>";
+          } else if (q.type === "truefalse") {
+            const bSel = ans[qid] === 'B' ? ' sel' : '';
+            const sSel = ans[qid] === 'S' ? ' sel' : '';
+            ansHtml = `<div class="opts">
+              <div class="opt${bSel}" data-q="${qid}" data-v="B" onclick="sel(this)"><div class="opt-r"></div><span class="opt-l">B.</span><span class="opt-t">Benar</span></div>
+              <div class="opt${sSel}" data-q="${qid}" data-v="S" onclick="sel(this)"><div class="opt-r"></div><span class="opt-l">S.</span><span class="opt-t">Salah</span></div>
+            </div>`;
+          } else {
+            ansHtml = `<input type="text" class="text-ans" data-q="${qid}" placeholder="Tulis jawaban..." value="${ans[qid] || ''}" oninput="tinp(this)">`;
+          }
+
+          html += `<div class="q-card${ans[qid] ? ' answered' : ''}" id="c-${qid}"><div class="q-num">Soal ${q.displayNum}</div><div class="q-text">${cleanText}${imgHtml}</div>${ansHtml}</div>`;
+        });
+
+        document.getElementById("qCont").innerHTML = html;
+        document.getElementById("tCnt").textContent = curQ.length;
+        uprog();
+
+        startT = Date.now();
+        clearInterval(timerI);
+        timerI = setInterval(() => {
+          const elapsed = Math.floor((Date.now() - startT) / 1000);
+          document.getElementById("timer").textContent =
+            String(Math.floor(elapsed / 60)).padStart(2, "0") + ":" +
+            String(elapsed % 60).padStart(2, "0");
+        }, 1000);
       }
 
       // ========== SHUFFLE & RENDER ==========
@@ -888,10 +1037,11 @@
         // Phase 2: Select random samples
         const selected = [];
         const types = ["choice", "truefalse", "text"];
+        const counts = getCounts();
 
         types.forEach((type) => {
           const candidates = pool.filter((q) => q.type === type);
-          const count = COUNTS[type] || 5;
+          const count = counts[type] || 5;
           const shuffled = candidates.sort(() => 0.5 - Math.random());
           selected.push(...shuffled.slice(0, count));
         });
@@ -903,9 +1053,10 @@
         });
 
         // Phase 3: Build HTML
+        const typeCfg = getCurrentType();
         document.getElementById("eTitle").textContent = "Ujian Sumatif";
         document.getElementById("eMeta").textContent =
-          `Paket Acak • ${finalSet.length} Soal • STS Genap`;
+          `Paket Acak • ${finalSet.length} Soal • ${typeCfg.shortLabel}`;
         document.getElementById("hSub").textContent =
           "Pendidikan Kurikulum Merdeka";
         document.getElementById("bottom").style.display = "";
@@ -973,6 +1124,22 @@
         }, 1000);
       }
 
+      function saveState() {
+        try { localStorage.setItem(STATE_KEY(), JSON.stringify({ ans, curQ, curKey })); } catch (e) {}
+      }
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STATE_KEY());
+          if (!raw) return null;
+          const s = JSON.parse(raw);
+          if (s.curKey !== curKey) return null;
+          return s;
+        } catch (e) { return null; }
+      }
+      function clearState() {
+        try { localStorage.removeItem(STATE_KEY()); } catch (e) {}
+      }
+
       // ========== INTERACTIONS ==========
       function sel(el) {
         el.parentElement
@@ -982,6 +1149,7 @@
         ans[el.dataset.q] = el.dataset.v;
         document.getElementById("c-" + el.dataset.q).classList.add("answered");
         uprog();
+        saveState();
       }
       function tinp(el) {
         const val = el.value.trim();
@@ -997,6 +1165,7 @@
             .classList.remove("answered");
         }
         uprog();
+        saveState();
       }
       function uprog() {
         const total = curQ.length,
@@ -1080,9 +1249,13 @@
     Waktu: ${Math.floor(elapsed / 60)}m ${elapsed % 60}s<br>
     <div style="margin-top:10px;font-size:.8rem;color:var(--t3)">Soal isian harap diperiksa manual</div>
   `;
-        document.getElementById("overlay").classList.add("active");
         document.getElementById("btnSub").disabled = true;
         document.getElementById("btnSub").textContent = "Tersimpan ✓";
+        clearState();
+        // Auto-review
+        setTimeout(() => {
+          document.getElementById("overlay").classList.add("active");
+        }, 400);
       }
 
       function addBadge(card, cls, text) {
@@ -1112,6 +1285,7 @@
           if (!confirm("Batalkan ujian ini dan kembali ke menu?")) return;
         }
         clearInterval(timerI);
+        clearState();
         curQ = [];
         ans = {};
         document.getElementById("exam").classList.remove("active");

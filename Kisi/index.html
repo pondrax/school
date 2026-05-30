@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kisi-Kisi STS Genap - Kelas 2</title>
+    <title>Kisi-Kisi - Kelas 2</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -95,6 +95,40 @@
         max-width: 960px;
         margin: 0 auto;
         padding: 28px 24px 80px;
+      }
+
+      .type-selector {
+        margin-bottom: 28px;
+        width: 100%;
+        max-width: 400px;
+      }
+      .sel-type {
+        width: 100%;
+        padding: 12px 16px;
+        background: var(--bg2);
+        border: 1px solid var(--brd);
+        border-radius: var(--rs);
+        color: var(--t1);
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        outline: none;
+        transition: border-color 0.2s;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M6 8L0 0h12z' fill='%2394a3b8'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 40px;
+      }
+      .sel-type:hover { border-color: var(--ac); }
+      .sel-type:focus {
+        border-color: var(--ac);
+        box-shadow: 0 0 0 3px var(--acg);
+      }
+      .sel-type option {
+        background: var(--bg2);
+        color: var(--t1);
       }
 
       /* ===== PICKER VIEW ===== */
@@ -389,8 +423,8 @@
     <div class="header">
       <div class="header-inner">
         <div>
-          <h1>Kisi-Kisi Soal STS</h1>
-          <div class="sub">Sumatif Tengah Semester Genap — Kelas II</div>
+          <h1 id="hTitle">Kisi-Kisi Soal</h1>
+          <div class="sub" id="hSub">Kelas 2 — Pilih jenis & mapel</div>
         </div>
         <a href="/" class="btn-home">📝 Bank Soal</a>
       </div>
@@ -400,7 +434,10 @@
       <div class="picker" id="picker">
         <div class="icon">📋</div>
         <h2>Kisi-Kisi Soal</h2>
-        <p>Pilih mata pelajaran untuk melihat kisi-kisi STS Genap</p>
+        <p id="pickerDesc">Pilih jenis kisi dan mata pelajaran</p>
+        <div class="type-selector">
+          <select id="typeSelect" onchange="switchType(this.value)" class="sel-type"></select>
+        </div>
         <div class="file-grid" id="grid"></div>
       </div>
 
@@ -411,98 +448,84 @@
     </div>
 
     <script>
-      const KISI = [
+      // ========== TYPE CONFIG ==========
+      const KISI_TYPES = [
         {
-          key: "bahasa_indonesia",
-          file: "kisi_bahasa_indonesia.md",
-          emoji: "📖",
-          name: "Bahasa Indonesia",
-          desc: "Fabel, Antonim, Sifat, Sapaan",
+          id: "sts",
+          label: "📘 STS Genap (Tengah Semester)",
+          ext: ".md",
+          meta: "Kisi-Kisi STS Genap — MI Al-Azhar Kelas II",
+          subjects: [
+            { key: "bahasa_indonesia", file: "kelas-2/sts/kisi_bahasa_indonesia.md", emoji: "📖", name: "Bahasa Indonesia", desc: "Fabel, Antonim, Sifat, Sapaan" },
+            { key: "bahasa_inggris", file: "kelas-2/sts/kisi_bahasa_inggris.md", emoji: "🌍", name: "Bahasa Inggris", desc: "Pronoun, Family, Adjective" },
+            { key: "matematika", file: "kelas-2/sts/kisi_matematika.md", emoji: "🔢", name: "Matematika", desc: "Pecahan, Berat, Waktu, Jam" },
+            { key: "seni_rupa", file: "kelas-2/sts/kisi_seni_rupa.md", emoji: "🎨", name: "Seni Rupa", desc: "Kolase, Teknik, Keselamatan" },
+            { key: "ipas", file: "kelas-2/sts/kisi_ipas.md", emoji: "🔬", name: "IPAS", desc: "Identitas, Dokumen, Silsilah" },
+            { key: "pancasila", file: "kelas-2/sts/kisi_pancasila.md", emoji: "🇮🇩", name: "Pancasila", desc: "Identitas, Toleransi, Keberagaman" },
+            { key: "aqidah_akhlak", file: "kelas-2/sts/kisi_aqidah_akhlak.md", emoji: "🕌", name: "Aqidah Akhlak", desc: "Adab Bersin, Menguap, Rajin Belajar" },
+            { key: "fiqih", file: "kelas-2/sts/kisi_fiqih.md", emoji: "🤲", name: "Fiqih", desc: "Salat Berjamaah, Imam, Makmum" },
+            { key: "qurdits", file: "kelas-2/sts/kisi_qurdits.md", emoji: "📗", name: "Al-Qur'an Hadits", desc: "Al-Kafirun, Tajwid, Alif Lam" },
+            { key: "bahasa_arab", file: "kelas-2/sts/kisi_bahasa_arab.md", emoji: "🇸🇦", name: "Bahasa Arab", desc: "Alat Transportasi, Harf Hijaiyah" },
+            { key: "bahasa_jawa", file: "kelas-2/sts/kisi_bahasa_jawa.md", emoji: "🎭", name: "Bahasa Jawa", desc: "Reresik Omah, Cathetan Padinan, Basa Krama" },
+          ],
         },
         {
-          key: "bahasa_inggris",
-          file: "kisi_bahasa_inggris.md",
-          emoji: "🌍",
-          name: "Bahasa Inggris",
-          desc: "Pronoun, Family, Adjective",
-        },
-        {
-          key: "matematika",
-          file: "kisi_matematika.md",
-          emoji: "🔢",
-          name: "Matematika",
-          desc: "Pecahan, Berat, Waktu, Jam",
-        },
-        {
-          key: "seni_rupa",
-          file: "kisi_seni_rupa.md",
-          emoji: "🎨",
-          name: "Seni Rupa",
-          desc: "Kolase, Teknik, Keselamatan",
-        },
-        {
-          key: "ipas",
-          file: "kisi_ipas.md",
-          emoji: "🔬",
-          name: "IPAS",
-          desc: "Identitas, Dokumen, Silsilah",
-        },
-        {
-          key: "pancasila",
-          file: "kisi_pancasila.md",
-          emoji: "🇮🇩",
-          name: "Pancasila",
-          desc: "Identitas, Toleransi, Keberagaman",
-        },
-        {
-          key: "aqidah_akhlak",
-          file: "kisi_aqidah_akhlak.md",
-          emoji: "🕌",
-          name: "Aqidah Akhlak",
-          desc: "Adab Bersin, Menguap, Rajin Belajar",
-        },
-        {
-          key: "fiqih",
-          file: "kisi_fiqih.md",
-          emoji: "🤲",
-          name: "Fiqih",
-          desc: "Salat Berjamaah, Imam, Makmum",
-        },
-        {
-          key: "qurdits",
-          file: "kisi_qurdits.md",
-          emoji: "📗",
-          name: "Al-Qur'an Hadits",
-          desc: "Al-Kafirun, Tajwid, Alif Lam",
-        },
-        {
-          key: "bahasa_arab",
-          file: "kisi_bahasa_arab.md",
-          emoji: "🇸🇦",
-          name: "Bahasa Arab",
-          desc: "Alat Transportasi, Harf Hijaiyah",
-        },
-        {
-          key: "bahasa_jawa",
-          file: "kisi_bahasa_jawa.md",
-          emoji: "🎭",
-          name: "Bahasa Jawa",
-          desc: "Reresik Omah, Cathetan Padinan, Basa Krama",
+          id: "sat",
+          label: "📕 SAT Genap (Akhir Tahun)",
+          basePath: "kelas-2/sat/",
+          ext: ".docx",
+          meta: "Kisi-Kisi SAT Genap — MI Al-Azhar Kelas II",
+          subjects: [
+            { key: "bahasa_indonesia", file: "kelas-2/sat/Kisi-Kisi Soal Bahasa Indonesia kelas 2.docx", emoji: "📖", name: "Bahasa Indonesia", desc: "Dokumen kisi SAT" },
+            { key: "bahasa_inggris", file: "kelas-2/sat/kisi_BHS INGGRIS_2.docx", emoji: "🌍", name: "Bahasa Inggris", desc: "Dokumen kisi SAT" },
+            { key: "matematika", file: "kelas-2/sat/KISI - KISI MTK KLS 2 SMT GENAP SAT.docx", emoji: "🔢", name: "Matematika", desc: "Dokumen kisi SAT" },
+            { key: "pancasila", file: "kelas-2/sat/Kisi-Kisi Soal Pend Pancasila Kls 2.docx", emoji: "🇮🇩", name: "Pancasila", desc: "Dokumen kisi SAT" },
+            { key: "aqidah_akhlak", file: "kelas-2/sat/kisi_aqidah_2.docx", emoji: "🕌", name: "Aqidah Akhlak", desc: "Dokumen kisi SAT" },
+            { key: "fiqih", file: "kelas-2/sat/kisi_fiqih_2.docx", emoji: "🤲", name: "Fiqih", desc: "Dokumen kisi SAT" },
+            { key: "qurdits", file: "kelas-2/sat/kisi_qurdist_2.docx", emoji: "📗", name: "Al-Qur'an Hadits", desc: "Dokumen kisi SAT" },
+            { key: "bahasa_arab", file: "kelas-2/sat/kisi_arab_2.docx", emoji: "🇸🇦", name: "Bahasa Arab", desc: "Dokumen kisi SAT" },
+            { key: "bahasa_jawa", file: "kelas-2/sat/kisi-kisi_bahasa jawa_2.docx", emoji: "🎭", name: "Bahasa Jawa", desc: "Dokumen kisi SAT" },
+          ],
         },
       ];
 
-      // Render grid
-      document.getElementById("grid").innerHTML = KISI.map(
-        (k) =>
-          `<div class="file-card" onclick="loadKisi('${k.key}')">
-            <span class="emoji">${k.emoji}</span>
-            <div class="name">${k.name}</div>
-            <div class="desc">${k.desc}</div>
-          </div>`,
-      ).join("");
+      let selectedType = localStorage.getItem("kisiType") || KISI_TYPES[0].id;
 
+      function getType(id) { return KISI_TYPES.find((t) => t.id === id) || KISI_TYPES[0]; }
+
+      // ========== INIT ==========
+      function populateTypeSelect() {
+        const sel = document.getElementById("typeSelect");
+        sel.innerHTML = KISI_TYPES.map(
+          (t) => `<option value="${t.id}"${t.id === selectedType ? " selected" : ""}>${t.label}</option>`,
+        ).join("");
+      }
+      function renderGrid() {
+        const type = getType(selectedType);
+        document.getElementById("hSub").textContent = "Kelas 2 — " + type.label.replace(/^[^\s]+\s/, "");
+        document.getElementById("pickerDesc").textContent = "Pilih mata pelajaran untuk melihat kisi-kisi";
+        document.getElementById("grid").innerHTML = type.subjects.map(
+          (s) => `<div class="file-card" onclick="loadKisi('${s.key}')">
+            <span class="emoji">${s.emoji}</span>
+            <div class="name">${s.name}</div>
+            <div class="desc">${s.desc}</div>
+          </div>`,
+        ).join("");
+      }
+      populateTypeSelect();
+      renderGrid();
+
+      function switchType(val) {
+        selectedType = val;
+        localStorage.setItem("kisiType", val);
+        document.getElementById("hTitle").textContent = "Kisi-Kisi Soal";
+        renderGrid();
+      }
+
+      // ========== LOAD KISI ==========
       async function loadKisi(key) {
-        const info = KISI.find((k) => k.key === key);
+        const type = getType(selectedType);
+        const info = type.subjects.find((s) => s.key === key);
         if (!info) return;
 
         document.getElementById("picker").classList.add("hidden");
@@ -513,26 +536,45 @@
           <span class="emoji">${info.emoji}</span>
           <div>
             <h2>${info.name}</h2>
-            <div class="meta">Kisi-Kisi STS Genap — MI Al-Azhar Kelas II</div>
+            <div class="meta">${type.meta}</div>
           </div>
           <button class="btn-back-preview" onclick="backToPicker()">← Kembali</button>
         `;
+
+        if (type.ext === ".docx") {
+          // DOCX files cannot be rendered inline
+          document.getElementById("previewContent").innerHTML = `
+            <div class="loading" style="color:var(--t2)">
+              <div style="font-size:3rem;margin-bottom:16px">📄</div>
+              <div style="font-size:1.1rem;margin-bottom:8px">File Kisi-Kisi (DOCX)</div>
+              <p style="color:var(--t3);margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto">
+                File ini berformat DOCX dan tidak dapat ditampilkan langsung di browser.
+                Silakan unduh untuk melihat isinya.
+              </p>
+              <a href="${info.file}" download style="
+                display:inline-flex;align-items:center;gap:8px;
+                background:var(--ac);color:#fff;padding:12px 28px;border-radius:var(--rs);
+                text-decoration:none;font-weight:600;font-size:1rem;
+              ">⬇ Unduh ${info.name}.docx</a>
+            </div>`;
+          return;
+        }
 
         document.getElementById("previewContent").innerHTML =
           '<div class="loading"><div class="spinner"></div>Memuat kisi-kisi...</div>';
 
         try {
-          const resp = await fetch("/kisi-kisi/" + info.file);
+          const resp = await fetch(info.file);
           if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
           const md = await resp.text();
-          renderKisi(md, info);
+          renderKisi(md);
         } catch (err) {
           document.getElementById("previewContent").innerHTML =
             `<div class="loading" style="color:#ef4444">❌ Gagal memuat: ${err.message}</div>`;
         }
       }
 
-      function renderKisi(md, info) {
+      function renderKisi(md) {
         const lines = md.split("\n").filter((l) => l.trim());
         let html = "";
         let currentRows = [];
@@ -542,38 +584,23 @@
 
         for (const line of lines) {
           const trimmed = line.trim();
-
-          // Skip title/meta lines
           if (trimmed.startsWith("# ") || trimmed.startsWith("**")) continue;
 
-          // Table row
           if (trimmed.startsWith("|")) {
-            const cells = trimmed
-              .split("|")
-              .slice(1, -1)
-              .map((c) => c.trim());
-
-            // Skip separator rows
+            const cells = trimmed.split("|").slice(1, -1).map((c) => c.trim());
             if (cells.every((c) => /^-+$/.test(c))) continue;
-
-            // Detect header row (starts new section)
             if (cells[0] === "No") {
-              // Flush previous section
               if (currentRows.length > 0) {
                 html += buildTable(currentRows, sectionNames[sectionCount], sectionBadges[sectionCount]);
                 sectionCount++;
                 currentRows = [];
-              } else if (sectionCount === 0) {
-                // First header, just continue
               }
               continue;
             }
-
             currentRows.push(cells);
           }
         }
 
-        // Flush last section
         if (currentRows.length > 0) {
           html += buildTable(currentRows, sectionNames[sectionCount] || "Soal", sectionBadges[sectionCount] || "badge-pg");
         }
@@ -596,19 +623,16 @@
                 </tr>
               </thead>
               <tbody>`;
-
         rows.forEach((cells) => {
           const bentuk = (cells[3] || "").trim();
-          let badge = `<span class="${badgeClass}">${bentuk}</span>`;
           html += `<tr>
             <td>${cells[0] || ""}</td>
             <td>${cells[1] || ""}</td>
             <td>${cells[2] || ""}</td>
-            <td>${badge}</td>
+            <td><span class="${badgeClass}">${bentuk}</span></td>
             <td>${cells[4] || ""}</td>
           </tr>`;
         });
-
         html += `</tbody></table></div></div>`;
         return html;
       }
