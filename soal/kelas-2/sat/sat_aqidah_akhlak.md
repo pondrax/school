@@ -282,22 +282,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Ucapan ketika bersin → ... <!--correct:Alhamdulillah-->
-22. Perintah Allah yang pertama turun → ... <!--correct:Iqra' (Bacalah)-->
-23. Ucapan setelah belajar sebagai tanda syukur → ... <!--correct:Alhamdulillah-->
-24. Sifat Raja Fir'aun → ... <!--correct:Sombong / Zalim-->
-25. Sikap Nabi Musa a.s. menghadapi Fir'aun → ... <!--correct:Berani / Tegas-->
+21. Ucapan ketika bersin → ... <!--correct:chooser:Alhamdulillah-->
+22. Perintah Allah yang pertama turun → ... <!--correct:chooser:Iqra' (Bacalah)-->
+23. Ucapan setelah belajar sebagai tanda syukur → ... <!--correct:chooser:Alhamdulillah-->
+24. Sifat Raja Fir'aun → ... <!--correct:chooser:Sombong / Zalim-->
+25. Sikap Nabi Musa a.s. menghadapi Fir'aun → ... <!--correct:chooser:Berani / Tegas-->
 
-26. Hukum menuntut ilmu bagi setiap muslim → ... <!--correct:Wajib-->
-27. Yang menolong Nabi Musa a.s. saat bayi → ... <!--correct:Allah Swt.-->
-28. Adab bersin ketika sedang makan → ... <!--correct:Menutup mulut dan berpaling-->
-29. Lawan sifat sombong → ... <!--correct:Rendah hati-->
-30. Bacaan jawaban untuk orang yang bersin → ... <!--correct:Yarhamukallah-->
-31. Mukjizat Nabi Musa a.s. → ... <!--correct:Tongkat menjadi ular-->
-32. Sikap yang baik saat belajar → ... <!--correct:Serius dan fokus-->
-33. Yang dilakukan Fir'aun kepada Nabi Musa → ... <!--correct:Menentang dan mengancam-->
-34. Akibat malas belajar → ... <!--correct:Tidak mendapat ilmu-->
-35. Doa sebelum belajar membaca ... <!--correct:Basmalah-->
+26. Hukum menuntut ilmu bagi setiap muslim → ... <!--correct:chooser:Wajib-->
+27. Yang menolong Nabi Musa a.s. saat bayi → ... <!--correct:chooser:Allah Swt.-->
+28. Adab bersin ketika sedang makan → ... <!--correct:chooser:Menutup mulut dan berpaling-->
+29. Lawan sifat sombong → ... <!--correct:chooser:Rendah hati-->
+30. Bacaan jawaban untuk orang yang bersin → ... <!--correct:chooser:Yarhamukallah-->
+31. Mukjizat Nabi Musa a.s. → ... <!--correct:chooser:Tongkat menjadi ular-->
+32. Sikap yang baik saat belajar → ... <!--correct:chooser:Serius dan fokus-->
+33. Yang dilakukan Fir'aun kepada Nabi Musa → ... <!--correct:chooser:Menentang dan mengancam-->
+34. Akibat malas belajar → ... <!--correct:chooser:Tidak mendapat ilmu-->
+35. Doa sebelum belajar membaca ... <!--correct:chooser:Basmalah-->
 
 (Pilihan jawaban: Alhamdulillah, Iqra' (Bacalah), Alhamdulillah, Sombong / Zalim, Berani / Tegas, Yarhamukallah, Subhanallah, Penakut, Malas, Diam, Wajib, Allah Swt., Menutup mulut dan berpaling, Rendah hati, Tongkat menjadi ular, Serius dan fokus, Menentang dan mengancam, Tidak mendapat ilmu, Basmalah, Membuka mulut lebar)
 

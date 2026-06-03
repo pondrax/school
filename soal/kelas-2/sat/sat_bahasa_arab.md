@@ -295,22 +295,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Isim isyarah (kata tunjuk) untuk alat transportasi yang jauh (laki-laki) → ... <!--correct:ذٰلِكَ-->
-22. Arti "إِشَارَةُ الْمُرُورِ" → ... <!--correct:Rambu lalu lintas-->
-23. Kata tanya untuk menanyakan "apa" → ... <!--correct:مَا-->
-24. Arti "كُرْسِيٌّ" → ... <!--correct:Kursi-->
-25. Arti "جَبَلٌ" → ... <!--correct:Gunung-->
+21. Isim isyarah (kata tunjuk) untuk alat transportasi yang jauh (laki-laki) → ... <!--correct:chooser:ذٰلِكَ-->
+22. Arti "إِشَارَةُ الْمُرُورِ" → ... <!--correct:chooser:Rambu lalu lintas-->
+23. Kata tanya untuk menanyakan "apa" → ... <!--correct:chooser:مَا-->
+24. Arti "كُرْسِيٌّ" → ... <!--correct:chooser:Kursi-->
+25. Arti "جَبَلٌ" → ... <!--correct:chooser:Gunung-->
 
-26. Arti "نَهْرٌ" → ... <!--correct:Sungai-->
-27. Kata tanya untuk menanyakan "di mana" → ... <!--correct:أَيْنَ-->
-28. Isim isyarah untuk benda dekat laki-laki → ... <!--correct:هٰذَا-->
-29. Arti "خِزَانَةٌ" → ... <!--correct:Lemari-->
-30. Arti "بَحْرٌ" → ... <!--correct:Laut-->
-31. Bahasa Arab dari "pintu" → ... <!--correct:بَابٌ-->
-32. Arti "السَّمَاءُ" → ... <!--correct:Langit-->
-33. Bahasa Arab dari "awan" → ... <!--correct:سَحَابٌ-->
-34. Arti "مَنْظَرٌ" → ... <!--correct:Pemandangan-->
-35. Bahasa Arab dari "sepeda motor" → ... <!--correct:جَوَّالَةٌ-->
+26. Arti "نَهْرٌ" → ... <!--correct:chooser:Sungai-->
+27. Kata tanya untuk menanyakan "di mana" → ... <!--correct:chooser:أَيْنَ-->
+28. Isim isyarah untuk benda dekat laki-laki → ... <!--correct:chooser:هٰذَا-->
+29. Arti "خِزَانَةٌ" → ... <!--correct:chooser:Lemari-->
+30. Arti "بَحْرٌ" → ... <!--correct:chooser:Laut-->
+31. Bahasa Arab dari "pintu" → ... <!--correct:chooser:بَابٌ-->
+32. Arti "السَّمَاءُ" → ... <!--correct:chooser:Langit-->
+33. Bahasa Arab dari "awan" → ... <!--correct:chooser:سَحَابٌ-->
+34. Arti "مَنْظَرٌ" → ... <!--correct:chooser:Pemandangan-->
+35. Bahasa Arab dari "sepeda motor" → ... <!--correct:chooser:جَوَّالَةٌ-->
 
 (Pilihan jawaban: ذٰلِكَ, Rambu lalu lintas, مَا, Kursi, Gunung, هٰذَا, Mobil, مَنْ, Meja, Laut, Sungai, أَيْنَ, Lemari, بَابٌ, Langit, سَحَابٌ, Pemandangan, جَوَّالَةٌ, Rumah, Sekolah)
 

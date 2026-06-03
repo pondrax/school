@@ -282,22 +282,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Surat Al-Kafirun ayat ke-3 → ... <!--correct:لَا أَنْتُمْ عَابِدُونَ مَا أَعْبُدُ-->
-22. Hukum bacaan الْكَوْثَرَ → ... <!--correct:Alif Lam Qamariyah-->
-23. Hukum bacaan الرَّحْمٰنِ → ... <!--correct:Alif Lam Syamsiyah-->
-24. Surat yang turun setelah Al-Kafirun → ... <!--correct:An-Nashr-->
-25. Hadits tentang hormat kepada orang tua diriwayatkan → ... <!--correct:HR Bukhari Muslim-->
+21. Surat Al-Kafirun ayat ke-3 → ... <!--correct:chooser:لَا أَنْتُمْ عَابِدُونَ مَا أَعْبُدُ-->
+22. Hukum bacaan الْكَوْثَرَ → ... <!--correct:chooser:Alif Lam Qamariyah-->
+23. Hukum bacaan الرَّحْمٰنِ → ... <!--correct:chooser:Alif Lam Syamsiyah-->
+24. Surat yang turun setelah Al-Kafirun → ... <!--correct:chooser:An-Nashr-->
+25. Hadits tentang hormat kepada orang tua diriwayatkan → ... <!--correct:chooser:HR Bukhari Muslim-->
 
-26. Arti surat Al-Kautsar ayat ke-2 → ... <!--correct:Maka dirikanlah salat karena Tuhanmu, dan berkurbanlah-->
-27. Hukum bacaan "الْقَمَرُ" → ... <!--correct:Alif Lam Qamariyah-->
-28. Hukum bacaan "السَّمَاءُ" → ... <!--correct:Alif Lam Syamsiyah-->
-29. Hadits tentang hormat kepada orang tua mengajarkan tentang → ... <!--correct:Birrul walidain-->
-30. Nama lain Alif Lam Qamariyah → ... <!--correct:Izhar Qamariyah-->
-31. Surat Al-Kafirun ayat ke-1 → ... <!--correct:قُلْ يَا أَيُّهَا الْكَافِرُونَ-->
-32. Kandungan surat Al-Kautsar → ... <!--correct:Perintah bersyukur dengan salat dan berkurban-->
-33. Cara menghormati orang tua yang sudah meninggal → ... <!--correct:Mendoakan mereka-->
-34. Jumlah ayat surat Al-Kautsar → ... <!--correct:3-->
-35. Arti "إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ" → ... <!--correct:Sesungguhnya orang yang membencimu dialah yang terputus-->
+26. Arti surat Al-Kautsar ayat ke-2 → ... <!--correct:chooser:Maka dirikanlah salat karena Tuhanmu, dan berkurbanlah-->
+27. Hukum bacaan "الْقَمَرُ" → ... <!--correct:chooser:Alif Lam Qamariyah-->
+28. Hukum bacaan "السَّمَاءُ" → ... <!--correct:chooser:Alif Lam Syamsiyah-->
+29. Hadits tentang hormat kepada orang tua mengajarkan tentang → ... <!--correct:chooser:Birrul walidain-->
+30. Nama lain Alif Lam Qamariyah → ... <!--correct:chooser:Izhar Qamariyah-->
+31. Surat Al-Kafirun ayat ke-1 → ... <!--correct:chooser:قُلْ يَا أَيُّهَا الْكَافِرُونَ-->
+32. Kandungan surat Al-Kautsar → ... <!--correct:chooser:Perintah bersyukur dengan salat dan berkurban-->
+33. Cara menghormati orang tua yang sudah meninggal → ... <!--correct:chooser:Mendoakan mereka-->
+34. Jumlah ayat surat Al-Kautsar → ... <!--correct:chooser:3-->
+35. Arti "إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ" → ... <!--correct:chooser:Sesungguhnya orang yang membencimu dialah yang terputus-->
 
 (Pilihan jawaban: لَا أَنْتُمْ عَابِدُونَ مَا أَعْبُدُ, Alif Lam Qamariyah, Alif Lam Syamsiyah, An-Nashr, HR Bukhari Muslim, لَكُمْ دِينُكُمْ وَلِيَ دِينِ, Ghunnah, Al-Ikhlas, Al-Fatihah, HR Tirmidzi, Maka dirikanlah salat karena Tuhanmu, dan berkurbanlah, Birrul walidain, Izhar Qamariyah, قُلْ يَا أَيُّهَا الْكَافِرُونَ, Perintah bersyukur dengan salat dan berkurban, Mendoakan mereka, 3, Sesungguhnya orang yang membencimu dialah yang terputus, Al-Ma'un, Tidak perlu menghormati)
 

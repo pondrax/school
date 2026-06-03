@@ -625,6 +625,70 @@
           transform: rotate(360deg);
         }
       }
+      .m-conn {
+        display: flex;
+        gap: 32px;
+        margin-top: 16px;
+        position: relative;
+        align-items: stretch;
+      }
+      .m-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-width: 0;
+        position: relative;
+        z-index: 2;
+      }
+      .m-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .m-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 14px;
+        background: var(--bg2);
+        border-radius: var(--r);
+        border: 1px solid var(--brd);
+        transition: border-color .15s;
+        position: relative;
+        z-index: 2;
+      }
+      .m-row:has(.m-l.sel) {
+        border-color: var(--ac);
+        box-shadow: 0 0 0 1px var(--acg);
+      }
+      .m-ltr {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 2.5px solid var(--brd);
+        background: var(--bg1);
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: all .2s;
+      }
+      .m-col-q .m-row .m-l { margin-left: auto; }
+      .m-l:hover { border-color: var(--ac); background: var(--acg); }
+      .m-r:hover { border-color: var(--ac); background: var(--acg); }
+      .m-l.sel {
+        border-color: var(--ac);
+        background: var(--ac);
+        box-shadow: 0 0 0 4px var(--acg);
+        transform: scale(1.25);
+      }
+      .m-txt { font-size: .95rem; color: var(--t1); line-height: 1.45; }
+      @media (max-width: 700px) {
+        .m-conn { flex-direction: column; gap: 16px; }
+        .m-svg { display: none; }
+        .m-ltr { width: 18px; height: 18px; }
+      }
       @media (max-width: 600px) {
         .file-grid {
           grid-template-columns: 1fr;
@@ -794,7 +858,7 @@
           shortLabel: "Kelas 2 — SAT Genap",
           basePath: "/soal/kelas-2/sat/",
           filePrefix: "sat_",
-          counts: { choice: 15, truefalse: 5, text: 10 },
+          counts: { choice: 15, truefalse: 5, match: 5, text: 5 },
         },
       ];
 
@@ -891,13 +955,43 @@
 
         let html = "";
         let lastType = "";
-        const typeNames = { choice: "Pilihan Ganda", truefalse: "Benar atau Salah", text: "Isian / Jawablah" };
+        let matchBuffer = [];
+        const typeNames = { choice: "Pilihan Ganda", truefalse: "Benar atau Salah", match: "Menjodohkan", text: "Isian / Jawablah" };
+
+        function renderMatchBlock(questions) {
+          const opts = questions[0].matchOptions || [];
+          const qLabels = "ABCDEFGHIJ";
+          let leftHtml = "", rightHtml = "";
+          questions.forEach((q, i) => {
+            const qid = "q" + q.displayNum;
+            const cleanText = (q.text || "")
+              .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+              .replace(/\$([^$]+)\$/g, "<strong>$1</strong>");
+            leftHtml += `<div class="m-row" data-q="${qid}">
+              <div class="m-txt">${cleanText}</div>
+              <div class="m-l m-ltr" data-q="${qid}" onclick="mL(this)"></div>
+            </div>`;
+          });
+          opts.forEach((o) => {
+            rightHtml += `<div class="m-row" data-text="${o.text}">
+              <div class="m-r m-ltr" data-text="${o.text}" onclick="mR(this)"></div>
+              <div class="m-txt">${o.text}</div>
+            </div>`;
+          });
+          return `<div class="m-conn"><svg class="m-svg"></svg><div class="m-col m-col-q">${leftHtml}</div><div class="m-col m-col-a">${rightHtml}</div></div>`;
+        }
 
         curQ.forEach((q) => {
           if (q.type !== lastType) {
+            if (lastType === "match" && matchBuffer.length) {
+              html += renderMatchBlock(matchBuffer);
+              matchBuffer = [];
+            }
             html += `<div class="section-hdr">${typeNames[q.type]}</div>`;
             lastType = q.type;
           }
+          if (q.type === "match") { matchBuffer.push(q); return; }
+
           const qid = "q" + q.displayNum;
           const imgHtml = q.img
             ? `<img src="${q.img.src}" alt="${q.img.alt}" loading="lazy" onerror="this.style.display='none'">`
@@ -926,9 +1020,11 @@
 
           html += `<div class="q-card${ans[qid] ? ' answered' : ''}" id="c-${qid}"><div class="q-num">Soal ${q.displayNum}</div><div class="q-text">${cleanText}${imgHtml}</div>${ansHtml}</div>`;
         });
+        if (matchBuffer.length) html += renderMatchBlock(matchBuffer);
 
         document.getElementById("qCont").innerHTML = html;
         document.getElementById("tCnt").textContent = curQ.length;
+        _mc();
         uprog();
 
         startT = Date.now();
@@ -977,17 +1073,28 @@
           if (qm) {
             if (curQn) pool.push(curQn);
             gId++;
+            const text = qm[2].trim();
             curQn = {
               id: gId,
-              text: qm[2],
+              text: text,
               options: [],
               type: "text",
+              matchOptions: [],
+              matchSection: false,
               img: null,
               correct: null,
               sec: curSecHeader,
             };
-            if (genericCorrect && genericCorrect[1])
-              curQn.correct = genericCorrect[1].trim();
+            if (genericCorrect && genericCorrect[1]) {
+              const raw = genericCorrect[1].trim();
+              if (raw.startsWith("chooser:")) {
+                curQn.type = "match";
+                curQn.matchSection = true;
+                curQn.correct = raw.slice(8).trim();
+              } else {
+                curQn.correct = raw;
+              }
+            }
             continue;
           }
           if (curQn) {
@@ -1022,6 +1129,7 @@
 
         // Identify type for all pooled questions
         pool.forEach((q) => {
+          if (q.matchSection) return;
           const h = (q.sec || "").toLowerCase();
           if (q.options.length) q.type = "choice";
           else if (
@@ -1036,7 +1144,7 @@
 
         // Phase 2: Select random samples
         const selected = [];
-        const types = ["choice", "truefalse", "text"];
+        const types = ["choice", "truefalse", "match", "text"];
         const counts = getCounts();
 
         types.forEach((type) => {
@@ -1052,6 +1160,19 @@
           return { ...q, displayNum: reIndex++ };
         });
 
+        // Assign match options from selected questions only
+        const matchSelected = finalSet.filter(q => q.type === "match");
+        if (matchSelected.length > 0) {
+          const allCorrect = [...new Set(matchSelected.map(q => q.correct).filter(Boolean))];
+          const shuffled = [...allCorrect].sort(() => 0.5 - Math.random());
+          matchSelected.forEach(q => {
+            q.matchOptions = shuffled.map((text, i) => ({
+              label: String.fromCharCode(65 + i),
+              text: text
+            }));
+          });
+        }
+
         // Phase 3: Build HTML
         const typeCfg = getCurrentType();
         document.getElementById("eTitle").textContent = "Ujian Sumatif";
@@ -1066,17 +1187,48 @@
 
         let html = "";
         let lastType = "";
+        let matchBuffer = [];
         const typeNames = {
           choice: "Pilihan Ganda",
           truefalse: "Benar atau Salah",
+          match: "Menjodohkan",
           text: "Isian / Jawablah",
         };
 
+        function renderMatchBlock(questions) {
+          const opts = questions[0].matchOptions || [];
+          let leftHtml = "", rightHtml = "";
+          questions.forEach((q, i) => {
+            const qid = "q" + q.displayNum;
+            const cleanText = q.text
+              .replace(/\\_\\_\\_/g, "___")
+              .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+              .replace(/\$([^$]+)\$/g, "<strong>$1</strong>");
+            leftHtml += `<div class="m-row" data-q="${qid}">
+              <div class="m-txt">${cleanText}</div>
+              <div class="m-l m-ltr" data-q="${qid}" onclick="mL(this)"></div>
+            </div>`;
+          });
+          opts.forEach((o) => {
+            rightHtml += `<div class="m-row" data-text="${o.text}">
+              <div class="m-r m-ltr" data-text="${o.text}" onclick="mR(this)"></div>
+              <div class="m-txt">${o.text}</div>
+            </div>`;
+          });
+          return `<div class="m-conn"><svg class="m-svg"></svg><div class="m-col m-col-q">${leftHtml}</div><div class="m-col m-col-a">${rightHtml}</div></div>`;
+        }
+
         finalSet.forEach((q) => {
           if (q.type !== lastType) {
+            if (lastType === "match" && matchBuffer.length) {
+              html += renderMatchBlock(matchBuffer);
+              matchBuffer = [];
+            }
             html += `<div class="section-hdr">${typeNames[q.type]}</div>`;
             lastType = q.type;
           }
+          if (q.type === "match") { matchBuffer.push(q); return; }
+
           const qid = "q" + q.displayNum;
           const imgHtml = q.img
             ? `<img src="${q.img.src}" alt="${q.img.alt}" loading="lazy" onerror="this.style.display='none'">`
@@ -1108,6 +1260,7 @@
 
           html += `<div class="q-card" id="c-${qid}"><div class="q-num">Soal ${q.displayNum}</div><div class="q-text">${cleanText}${imgHtml}</div>${ansHtml}</div>`;
         });
+        if (matchBuffer.length) html += renderMatchBlock(matchBuffer);
 
         document.getElementById("qCont").innerHTML = html;
         document.getElementById("tCnt").textContent = curQ.length;
@@ -1167,6 +1320,52 @@
         uprog();
         saveState();
       }
+      const _mColors = ['#3b82f6','#ef4444','#22c55e','#f59e0b','#8b5cf6','#ec4899','#14b8a6','#a855f7'];
+      function _mc() {
+        document.querySelectorAll('.m-l,.m-r').forEach(el => el.removeAttribute('data-conn'));
+        const svg = document.querySelector('.m-svg'), conn = document.querySelector('.m-conn');
+        if (!svg || !conn) return;
+        const cr = conn.getBoundingClientRect();
+        svg.setAttribute('width',cr.width);
+        svg.setAttribute('height',cr.height);
+        svg.style.width = cr.width+'px';
+        svg.style.height = cr.height+'px';
+        const paths = [];
+        document.querySelectorAll('.m-l').forEach(el => {
+          const qid = el.dataset.q, txt = ans[qid];
+          if (!txt) return;
+          const rEl = document.querySelector(`.m-r[data-text="${txt}"]`);
+          if (!rEl) return;
+          const ri = [...document.querySelectorAll('.m-r')].indexOf(rEl);
+          const lr = el.getBoundingClientRect(), rr = rEl.getBoundingClientRect();
+          const x1 = lr.right-cr.left, y1 = lr.top+lr.height/2-cr.top;
+          const x2 = rr.left-cr.left, y2 = rr.top+rr.height/2-cr.top;
+          const cx = (x1+x2)/2;
+          const c = _mColors[ri%_mColors.length];
+          paths.push(`<path d="M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>`);
+          el.dataset.conn = '1';
+          rEl.dataset.conn = '1';
+        });
+        svg.innerHTML = paths.join('');
+      }
+      function mL(el) {
+        const qid = el.dataset.q;
+        if (ans[qid]) { delete ans[qid]; _mc(); uprog(); saveState(); el.removeAttribute('data-conn'); return; }
+        document.querySelectorAll('.m-l.sel').forEach(e=>e.classList.remove('sel'));
+        el.classList.add('sel');
+      }
+      function mR(el) {
+        const sel = document.querySelector('.m-l.sel');
+        if (!sel) return;
+        const qid = sel.dataset.q, txt = el.dataset.text;
+        for (const [k,v] of Object.entries(ans)) {
+          if (v === txt && k !== qid) { delete ans[k]; break; }
+        }
+        ans[qid] = txt;
+        sel.classList.remove('sel');
+        _mc();
+        uprog(); saveState();
+      }
       function uprog() {
         const total = curQ.length,
           answered = Object.keys(ans).length,
@@ -1197,9 +1396,32 @@
 
         curQ.forEach((q) => {
           const qid = "q" + q.displayNum,
-            card = document.getElementById("c-" + qid);
-          const userAns = ans[qid],
+            userAns = ans[qid],
             correctAns = q.correct;
+
+          if (q.type === "match") {
+            gradableTotal++;
+            if (!userAns) {
+              if (correctAns) {
+                const rRow = document.querySelector(`.m-row[data-text="${correctAns}"]`);
+                if (rRow) rRow.style.borderColor = 'var(--ok)';
+              }
+            } else if (correctAns && userAns.toLowerCase() === correctAns.toLowerCase()) {
+              scorePoints++;
+              const lRow = document.querySelector(`.m-row[data-q="${qid}"]`);
+              if (lRow) lRow.style.borderColor = 'var(--ok)';
+              const rRow = document.querySelector(`.m-row[data-text="${correctAns}"]`);
+              if (rRow) rRow.style.borderColor = 'var(--ok)';
+            } else if (correctAns) {
+              const lRow = document.querySelector(`.m-row[data-q="${qid}"]`);
+              if (lRow) lRow.style.borderColor = 'var(--err)';
+              const rRow = document.querySelector(`.m-row[data-text="${correctAns}"]`);
+              if (rRow) rRow.style.borderColor = 'var(--ok)';
+            }
+            return;
+          }
+
+          const card = document.getElementById("c-" + qid);
           card.classList.add("submitted");
 
           if (q.type === "text") {
@@ -1244,7 +1466,7 @@
             : 0;
         document.getElementById("rScore").textContent = finalScore;
         document.getElementById("rDetail").innerHTML = `
-    Skor PG & B/S: <strong>${finalScore}</strong><br>
+    Skor: <strong>${finalScore}</strong><br>
     Benar: ${scorePoints} / ${gradableTotal}<br>
     Waktu: ${Math.floor(elapsed / 60)}m ${elapsed % 60}s<br>
     <div style="margin-top:10px;font-size:.8rem;color:var(--t3)">Soal isian harap diperiksa manual</div>
@@ -1297,6 +1519,7 @@
         document.getElementById("btnSub").disabled = false;
         document.getElementById("btnSub").textContent = "Kumpulkan Jawaban";
       }
+      window.addEventListener('resize', _mc);
     </script>
   </body>
 </html>

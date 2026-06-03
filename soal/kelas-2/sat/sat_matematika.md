@@ -314,22 +314,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Nilai tempat dari angka 5 pada bilangan 58 → ... <!--correct:Puluhan-->
-22. Angka yang menjadi penyebut pada pecahan 1/4 → ... <!--correct:4-->
-23. Setengah dari 10 buah kelereng → ... <!--correct:5-->
-24. Bulan setelah bulan Juni → ... <!--correct:Juli-->
-25. Ibu memasak dari pukul 09.00 sampai 10.00, lama memasak → ... <!--correct:1 jam-->
+21. Nilai tempat dari angka 5 pada bilangan 58 → ... <!--correct:chooser:Puluhan-->
+22. Angka yang menjadi penyebut pada pecahan 1/4 → ... <!--correct:chooser:4-->
+23. Setengah dari 10 buah kelereng → ... <!--correct:chooser:5-->
+24. Bulan setelah bulan Juni → ... <!--correct:chooser:Juli-->
+25. Ibu memasak dari pukul 09.00 sampai 10.00, lama memasak → ... <!--correct:chooser:1 jam-->
 
-26. Nilai tempat angka 7 pada bilangan 75 → ... <!--correct:Puluhan-->
-27. Pecahan yang dibaca "setengah" → ... <!--correct:1/2-->
-28. Setengah dari 20 → ... <!--correct:10-->
-29. Bulan setelah Juli → ... <!--correct:Agustus-->
-30. Alat untuk menimbang berat benda → ... <!--correct:Timbangan / Neraca-->
-31. Lambang bilangan dari "sembilan puluh sembilan" → ... <!--correct:99-->
-32. Satu minggu ada ... hari → ... <!--correct:7-->
-33. Banyak siswa jika data turus menunjukkan |||| |||| || → ... <!--correct:12-->
-34. Pukul 21.00 sama dengan pukul ... malam. → ... <!--correct:9-->
-35. Setengah dari 8 buah jeruk → ... <!--correct:4-->
+26. Nilai tempat angka 7 pada bilangan 75 → ... <!--correct:chooser:Puluhan-->
+27. Pecahan yang dibaca "setengah" → ... <!--correct:chooser:1/2-->
+28. Setengah dari 20 → ... <!--correct:chooser:10-->
+29. Bulan setelah Juli → ... <!--correct:chooser:Agustus-->
+30. Alat untuk menimbang berat benda → ... <!--correct:chooser:Timbangan / Neraca-->
+31. Lambang bilangan dari "sembilan puluh sembilan" → ... <!--correct:chooser:99-->
+32. Satu minggu ada ... hari → ... <!--correct:chooser:7-->
+33. Banyak siswa jika data turus menunjukkan |||| |||| || → ... <!--correct:chooser:12-->
+34. Pukul 21.00 sama dengan pukul ... malam. → ... <!--correct:chooser:9-->
+35. Setengah dari 8 buah jeruk → ... <!--correct:chooser:4-->
 
 (Pilihan jawaban: Puluhan, 4, 5, Juli, 1 jam, Satuan, 3, 6, Agustus, 2 jam, 1/2, 10, Timbangan / Neraca, 99, 7, 12, 9, 100, 8, 0)
 

@@ -294,22 +294,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Cerita rakyat tentang anak laki-laki yang berubah menjadi kendil → ... <!--correct:Joko Kendil-->
-22. Contoh sampah yang tidak bisa membusuk (anorganik) → ... <!--correct:Plastik-->
-23. Seni melipat kertas dari Jepang → ... <!--correct:Origami-->
-24. Orang yang bekerja mengajar di sekolah → ... <!--correct:Guru-->
-25. Akhir baris yang bersuara sama pada pantun → ... <!--correct:Rima-->
+21. Cerita rakyat tentang anak laki-laki yang berubah menjadi kendil → ... <!--correct:chooser:Joko Kendil-->
+22. Contoh sampah yang tidak bisa membusuk (anorganik) → ... <!--correct:chooser:Plastik-->
+23. Seni melipat kertas dari Jepang → ... <!--correct:chooser:Origami-->
+24. Orang yang bekerja mengajar di sekolah → ... <!--correct:chooser:Guru-->
+25. Akhir baris yang bersuara sama pada pantun → ... <!--correct:chooser:Rima-->
 
-26. Antonim dari "besar" → ... <!--correct:Kecil-->
-27. Orang yang menanam padi di sawah → ... <!--correct:Petani-->
-28. Tanda baca untuk kalimat seru → ... <!--correct:Tanda seru (!)-->
-29. Kata yang digunakan untuk meminta maaf → ... <!--correct:Maaf-->
-30. Jumlah baris dalam satu bait pantun → ... <!--correct:4-->
-31. Cerita tentang hewan yang bisa bicara → ... <!--correct:Fabel-->
-32. Lawan kata "malam" → ... <!--correct:Siang-->
-33. Orang yang bekerja memeriksa pasien → ... <!--correct:Dokter-->
-34. Uang kertas pecahan Rp100.000,00 bergambar → ... <!--correct:Ir. Soekarno dan Drs. Moh. Hatta-->
-35. Kata "dan", "atau", "tetapi" disebut → ... <!--correct:Kata penghubung-->
+26. Antonim dari "besar" → ... <!--correct:chooser:Kecil-->
+27. Orang yang menanam padi di sawah → ... <!--correct:chooser:Petani-->
+28. Tanda baca untuk kalimat seru → ... <!--correct:chooser:Tanda seru (!)-->
+29. Kata yang digunakan untuk meminta maaf → ... <!--correct:chooser:Maaf-->
+30. Jumlah baris dalam satu bait pantun → ... <!--correct:chooser:4-->
+31. Cerita tentang hewan yang bisa bicara → ... <!--correct:chooser:Fabel-->
+32. Lawan kata "malam" → ... <!--correct:chooser:Siang-->
+33. Orang yang bekerja memeriksa pasien → ... <!--correct:chooser:Dokter-->
+34. Uang kertas pecahan Rp100.000,00 bergambar → ... <!--correct:chooser:Ir. Soekarno dan Drs. Moh. Hatta-->
+35. Kata "dan", "atau", "tetapi" disebut → ... <!--correct:chooser:Kata penghubung-->
 
 (Pilihan jawaban: Joko Kendil, Plastik, Origami, Guru, Rima, Malin Kundang, Kertas, Dokter, Sampah, Irama, Kecil, Petani, Tanda seru (!), Maaf, 4, Fabel, Siang, Ir. Soekarno dan Drs. Moh. Hatta, Kata penghubung, Nelayan)
 

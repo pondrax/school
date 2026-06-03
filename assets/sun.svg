@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <circle cx="100" cy="100" r="40" fill="#FFD700" stroke="#FFA500" stroke-width="3"/>
+  <line x1="100" y1="25" x2="100" y2="45" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <line x1="100" y1="155" x2="100" y2="175" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <line x1="25" y1="100" x2="45" y2="100" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <line x1="155" y1="100" x2="175" y2="100" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <line x1="47" y1="47" x2="60" y2="60" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <line x1="140" y1="140" x2="153" y2="153" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <line x1="47" y1="153" x2="60" y2="140" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <line x1="140" y1="60" x2="153" y2="47" stroke="#FFA500" stroke-width="4" stroke-linecap="round"/>
+  <text x="75" y="200" font-size="14" fill="#666" font-family="sans-serif">Matahari</text>
+</svg>

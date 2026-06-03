@@ -282,22 +282,22 @@ Write (T) for True and (F) for False!
 ### C. Matching (Menjodohkan)
 Match the description with the correct animal!
 
-21. It has a long trunk and big ears → ... <!--correct:Elephant-->
-22. It has a long neck and eats leaves → ... <!--correct:Giraffe-->
-23. It can swim and has fins → ... <!--correct:Fish-->
-24. "Nasi goreng" in English → ... <!--correct:Fried Rice-->
-25. "Susu" in English → ... <!--correct:Milk-->
+21. It has a long trunk and big ears → ... <!--correct:chooser:Elephant-->
+22. It has a long neck and eats leaves → ... <!--correct:chooser:Giraffe-->
+23. It can swim and has fins → ... <!--correct:chooser:Fish-->
+24. "Nasi goreng" in English → ... <!--correct:chooser:Fried Rice-->
+25. "Susu" in English → ... <!--correct:chooser:Milk-->
 
-26. It can hop and has long ears → ... <!--correct:Rabbit-->
-27. It has no legs and crawls → ... <!--correct:Snake-->
-28. "Ibu" in English → ... <!--correct:Mother-->
-29. "Kakek" in English → ... <!--correct:Grandfather-->
-30. The opposite of "big" → ... <!--correct:Small-->
-31. "Bread" in Indonesian → ... <!--correct:Roti-->
-32. "She" is used for → ... <!--correct:A girl / Perempuan-->
-33. The color of the sky → ... <!--correct:Blue-->
-34. "Delicious" in Indonesian → ... <!--correct:Enak / Lezat-->
-35. It swims and has fins → ... <!--correct:Fish-->
+26. It can hop and has long ears → ... <!--correct:chooser:Rabbit-->
+27. It has no legs and crawls → ... <!--correct:chooser:Snake-->
+28. "Ibu" in English → ... <!--correct:chooser:Mother-->
+29. "Kakek" in English → ... <!--correct:chooser:Grandfather-->
+30. The opposite of "big" → ... <!--correct:chooser:Small-->
+31. "Bread" in Indonesian → ... <!--correct:chooser:Roti-->
+32. "She" is used for → ... <!--correct:chooser:A girl / Perempuan-->
+33. The color of the sky → ... <!--correct:chooser:Blue-->
+34. "Delicious" in Indonesian → ... <!--correct:chooser:Enak / Lezat-->
+35. It swims and has fins → ... <!--correct:chooser:Fish-->
 
 (Pilihan jawaban: Elephant, Giraffe, Fish, Fried Rice, Milk, Rabbit, Snake, Water, Bread, Orange Juice, Mother, Grandfather, Small, Roti, A girl / Perempuan, Blue, Enak / Lezat, Rice, Juice, Chicken)
 

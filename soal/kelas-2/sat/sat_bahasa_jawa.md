@@ -282,22 +282,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Basa ngokone "bapak" → ... <!--correct:Rama-->
-22. Basa ngokone "ibu" → ... <!--correct:Ibu-->
-23. Basa ngokone "kula" → ... <!--correct:Aku-->
-24. Basa ngokone "pepenginan" → ... <!--correct:Karep / Pepénginan-->
-25. Basa kramane "mangan" → ... <!--correct:Dhahar-->
+21. Basa ngokone "bapak" → ... <!--correct:chooser:Rama-->
+22. Basa ngokone "ibu" → ... <!--correct:chooser:Ibu-->
+23. Basa ngokone "kula" → ... <!--correct:chooser:Aku-->
+24. Basa ngokone "pepenginan" → ... <!--correct:chooser:Karep / Pepénginan-->
+25. Basa kramane "mangan" → ... <!--correct:chooser:Dhahar-->
 
-26. Tembung kosok balen saka "abot" → ... <!--correct:Enteng-->
-27. Tembung kosok balen saka "dhuwur" → ... <!--correct:Endhek-->
-28. Basa kramane "adus" → ... <!--correct:Siram-->
-29. Basa kramane "ombe" → ... <!--correct:Ngunjuk-->
-30. Watak Kancil ing dongeng → ... <!--correct:Cerdik-->
-31. Cathetan padinan uga diarani → ... <!--correct:Buku harian-->
-32. Tembung kosok balen saka "akeh" → ... <!--correct:Sithik-->
-33. Basa ngokone "Rama" → ... <!--correct:Bapak-->
-34. Tembung kosok balen saka "banter" → ... <!--correct:Alon-->
-35. Ukara "Kula sinau" basa ngokone → ... <!--correct:Aku sinau-->
+26. Tembung kosok balen saka "abot" → ... <!--correct:chooser:Enteng-->
+27. Tembung kosok balen saka "dhuwur" → ... <!--correct:chooser:Endhek-->
+28. Basa kramane "adus" → ... <!--correct:chooser:Siram-->
+29. Basa kramane "ombe" → ... <!--correct:chooser:Ngunjuk-->
+30. Watak Kancil ing dongeng → ... <!--correct:chooser:Cerdik-->
+31. Cathetan padinan uga diarani → ... <!--correct:chooser:Buku harian-->
+32. Tembung kosok balen saka "akeh" → ... <!--correct:chooser:Sithik-->
+33. Basa ngokone "Rama" → ... <!--correct:chooser:Bapak-->
+34. Tembung kosok balen saka "banter" → ... <!--correct:chooser:Alon-->
+35. Ukara "Kula sinau" basa ngokone → ... <!--correct:chooser:Aku sinau-->
 
 (Pilihan jawaban: Rama, Ibu, Aku, Dhahar, Pepenginan, Bapak, Sampeyan, Nedha, Karep, Tilem, Enteng, Endhek, Siram, Ngunjuk, Cerdik, Buku harian, Sithik, Alon, Aku sinau, Gedhe)
 

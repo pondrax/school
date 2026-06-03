@@ -282,22 +282,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Orang yang memimpin salat berjamaah disebut → ... <!--correct:Imam-->
-22. Salat berjamaah hukumnya sunnah ... bagi laki-laki → ... <!--correct:Muakkadah-->
-23. Pahala salat berjamaah dibanding salat sendiri → ... <!--correct:27 derajat-->
-24. "Astaghfirullahal'azhim" adalah bacaan → ... <!--correct:Istighfar-->
-25. Doa artinya → ... <!--correct:Permohonan kepada Allah-->
+21. Orang yang memimpin salat berjamaah disebut → ... <!--correct:chooser:Imam-->
+22. Salat berjamaah hukumnya sunnah ... bagi laki-laki → ... <!--correct:chooser:Muakkadah-->
+23. Pahala salat berjamaah dibanding salat sendiri → ... <!--correct:chooser:27 derajat-->
+24. "Astaghfirullahal'azhim" adalah bacaan → ... <!--correct:chooser:Istighfar-->
+25. Doa artinya → ... <!--correct:chooser:Permohonan kepada Allah-->
 
-26. Bacaan "Subhanallah" disebut → ... <!--correct:Tasbih-->
-27. Bacaan "Allahu Akbar" disebut → ... <!--correct:Takbir-->
-28. Bacaan "Alhamdulillah" disebut → ... <!--correct:Tahmid-->
-29. Pahala salat berjamaah 27 derajat lebih utama dari salat → ... <!--correct:Sendirian / Munfarid-->
-30. Waktu yang tepat untuk berdzikir → ... <!--correct:Setelah salat / Setiap saat-->
-31. Bacaan "Astaghfirullahal'azhim" adalah → ... <!--correct:Istighfar-->
-32. Doa "Rabbighfirli" artinya memohon ampun untuk → ... <!--correct:Diri sendiri dan orang tua-->
-33. Lafadz "Bismillah" disebut → ... <!--correct:Basmalah-->
-34. Makmum yang datang terlambat disebut → ... <!--correct:Masbuk-->
-35. Orang yang mengumandangkan adzan disebut → ... <!--correct:Muadzin-->
+26. Bacaan "Subhanallah" disebut → ... <!--correct:chooser:Tasbih-->
+27. Bacaan "Allahu Akbar" disebut → ... <!--correct:chooser:Takbir-->
+28. Bacaan "Alhamdulillah" disebut → ... <!--correct:chooser:Tahmid-->
+29. Pahala salat berjamaah 27 derajat lebih utama dari salat → ... <!--correct:chooser:Sendirian / Munfarid-->
+30. Waktu yang tepat untuk berdzikir → ... <!--correct:chooser:Setelah salat / Setiap saat-->
+31. Bacaan "Astaghfirullahal'azhim" adalah → ... <!--correct:chooser:Istighfar-->
+32. Doa "Rabbighfirli" artinya memohon ampun untuk → ... <!--correct:chooser:Diri sendiri dan orang tua-->
+33. Lafadz "Bismillah" disebut → ... <!--correct:chooser:Basmalah-->
+34. Makmum yang datang terlambat disebut → ... <!--correct:chooser:Masbuk-->
+35. Orang yang mengumandangkan adzan disebut → ... <!--correct:chooser:Muadzin-->
 
 (Pilihan jawaban: Imam, Muakkadah, 27 derajat, Istighfar, Permohonan kepada Allah, Makmum, Wajib, 7 derajat, Tasbih, Pujian, Takbir, Tahmid, Sendirian / Munfarid, Setelah salat / Setiap saat, Basmalah, Masbuk, Muadzin, Subhanallah, Tahlil, Berteriak)
 

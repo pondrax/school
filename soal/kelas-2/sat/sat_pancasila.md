@@ -282,22 +282,22 @@ Tentukan apakah pernyataan berikut Benar (B) atau Salah (S)!
 ### C. Menjodohkan
 Jodohkan pernyataan sebelah kiri dengan jawaban sebelah kanan yang tepat!
 
-21. Agama Islam, tempat ibadahnya → ... <!--correct:Masjid-->
-22. Agama Kristen, tempat ibadahnya → ... <!--correct:Gereja-->
-23. Agama Hindu, tempat ibadahnya → ... <!--correct:Pura-->
-24. Agama Buddha, tempat ibadahnya → ... <!--correct:Vihara-->
-25. Agama Konghucu, tempat ibadahnya → ... <!--correct:Klenteng-->
+21. Agama Islam, tempat ibadahnya → ... <!--correct:chooser:Masjid-->
+22. Agama Kristen, tempat ibadahnya → ... <!--correct:chooser:Gereja-->
+23. Agama Hindu, tempat ibadahnya → ... <!--correct:chooser:Pura-->
+24. Agama Buddha, tempat ibadahnya → ... <!--correct:chooser:Vihara-->
+25. Agama Konghucu, tempat ibadahnya → ... <!--correct:chooser:Klenteng-->
 
-26. Hobi yang menghasilkan karya seni → ... <!--correct:Melukis / Menggambar-->
-27. Sikap yang baik terhadap teman berbeda agama → ... <!--correct:Saling menghormati-->
-28. Cara merawat tanaman di sekolah → ... <!--correct:Menyiram setiap hari-->
-29. Kegiatan membersihkan lingkungan bersama-sama → ... <!--correct:Kerja bakti-->
-30. Lambang sila keempat Pancasila → ... <!--correct:Kepala banteng-->
-31. Contoh sikap peduli lingkungan di rumah → ... <!--correct:Menyapu halaman-->
-32. Bunyi sila ketiga Pancasila → ... <!--correct:Persatuan Indonesia-->
-33. Warna dasar lambang Garuda Pancasila → ... <!--correct:Kuning emas-->
-34. Contoh musyawarah di kelas → ... <!--correct:Memilih ketua kelas-->
-35. Akibat jika tidak ada kerja bakti → ... <!--correct:Lingkungan kotor dan kumuh-->
+26. Hobi yang menghasilkan karya seni → ... <!--correct:chooser:Melukis / Menggambar-->
+27. Sikap yang baik terhadap teman berbeda agama → ... <!--correct:chooser:Saling menghormati-->
+28. Cara merawat tanaman di sekolah → ... <!--correct:chooser:Menyiram setiap hari-->
+29. Kegiatan membersihkan lingkungan bersama-sama → ... <!--correct:chooser:Kerja bakti-->
+30. Lambang sila keempat Pancasila → ... <!--correct:chooser:Kepala banteng-->
+31. Contoh sikap peduli lingkungan di rumah → ... <!--correct:chooser:Menyapu halaman-->
+32. Bunyi sila ketiga Pancasila → ... <!--correct:chooser:Persatuan Indonesia-->
+33. Warna dasar lambang Garuda Pancasila → ... <!--correct:chooser:Kuning emas-->
+34. Contoh musyawarah di kelas → ... <!--correct:chooser:Memilih ketua kelas-->
+35. Akibat jika tidak ada kerja bakti → ... <!--correct:chooser:Lingkungan kotor dan kumuh-->
 
 (Pilihan jawaban: Masjid, Gereja, Pura, Vihara, Klenteng, Melukis / Menggambar, Saling menghormati, Menyiram setiap hari, Kerja bakti, Kepala banteng, Menyapu halaman, Persatuan Indonesia, Kuning emas, Memilih ketua kelas, Lingkungan kotor dan kumuh)
 
