@@ -660,34 +660,21 @@
         position: relative;
         z-index: 2;
       }
-      .m-row:has(.m-l.sel) {
-        border-color: var(--ac);
-        box-shadow: 0 0 0 1px var(--acg);
-      }
-      .m-ltr {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        border: 2.5px solid var(--brd);
-        background: var(--bg1);
-        cursor: pointer;
-        flex-shrink: 0;
-        transition: all .2s;
-      }
-      .m-col-q .m-row .m-l { margin-left: auto; }
-      .m-l:hover { border-color: var(--ac); background: var(--acg); }
-      .m-r:hover { border-color: var(--ac); background: var(--acg); }
-      .m-l.sel {
-        border-color: var(--ac);
-        background: var(--ac);
-        box-shadow: 0 0 0 4px var(--acg);
-        transform: scale(1.25);
+      .m-row { cursor: pointer; }
+      .m-row-q { position: relative; }
+      .m-row-q::after { content: "→"; margin-left: auto; opacity: 0; transition: opacity .15s; color: var(--t3); font-size: 1.1rem; flex-shrink: 0; }
+      .m-row-q:hover::after { opacity: 1; }
+      .m-row-q.sel::after { opacity: 1; color: var(--ac); }
+      .m-row-q:hover { border-color: var(--ac); background: var(--acg); }
+      .m-row-a:hover { border-color: var(--ac); background: var(--acg); }
+      .m-row-q.sel {
+        border-color: var(--ac) !important;
+        box-shadow: 0 0 0 2px var(--acg);
       }
       .m-txt { font-size: .95rem; color: var(--t1); line-height: 1.45; }
       @media (max-width: 700px) {
         .m-conn { flex-direction: column; gap: 16px; }
         .m-svg { display: none; }
-        .m-ltr { width: 18px; height: 18px; }
       }
       @media (max-width: 600px) {
         .file-grid {
@@ -960,25 +947,18 @@
 
         function renderMatchBlock(questions) {
           const opts = questions[0].matchOptions || [];
-          const qLabels = "ABCDEFGHIJ";
           let leftHtml = "", rightHtml = "";
-          questions.forEach((q, i) => {
+          questions.forEach((q) => {
             const qid = "q" + q.displayNum;
             const cleanText = (q.text || "")
               .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
               .replace(/\$([^$]+)\$/g, "<strong>$1</strong>");
-            leftHtml += `<div class="m-row" data-q="${qid}">
-              <div class="m-txt">${cleanText}</div>
-              <div class="m-l m-ltr" data-q="${qid}" onclick="mL(this)"></div>
-            </div>`;
+            leftHtml += `<div class="m-row m-row-q" data-q="${qid}" onclick="mL(this)"><div class="m-txt">${cleanText}</div></div>`;
           });
           opts.forEach((o) => {
-            rightHtml += `<div class="m-row" data-text="${o.text}">
-              <div class="m-r m-ltr" data-text="${o.text}" onclick="mR(this)"></div>
-              <div class="m-txt">${o.text}</div>
-            </div>`;
+            rightHtml += `<div class="m-row m-row-a" data-text="${o.text}" onclick="mR(this)"><div class="m-txt">${o.text}</div></div>`;
           });
-          return `<div class="m-conn"><svg class="m-svg"></svg><div class="m-col m-col-q">${leftHtml}</div><div class="m-col m-col-a">${rightHtml}</div></div>`;
+          return `<div class="m-conn"><svg class="m-svg"><path class="m-preview" d="" opacity="0"/></svg><div class="m-col m-col-q">${leftHtml}</div><div class="m-col m-col-a">${rightHtml}</div></div>`;
         }
 
         curQ.forEach((q) => {
@@ -1024,6 +1004,8 @@
 
         document.getElementById("qCont").innerHTML = html;
         document.getElementById("tCnt").textContent = curQ.length;
+        document.querySelector('.m-col-a')?.addEventListener('mousemove',e=>{const r=e.target.closest('.m-row-a');if(r)mPreview(r);else mPreviewOff()});
+        document.querySelector('.m-col-a')?.addEventListener('mouseleave',mPreviewOff);
         _mc();
         uprog();
 
@@ -1204,18 +1186,12 @@
               .replace(/\\_\\_\\_/g, "___")
               .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
               .replace(/\$([^$]+)\$/g, "<strong>$1</strong>");
-            leftHtml += `<div class="m-row" data-q="${qid}">
-              <div class="m-txt">${cleanText}</div>
-              <div class="m-l m-ltr" data-q="${qid}" onclick="mL(this)"></div>
-            </div>`;
+            leftHtml += `<div class="m-row m-row-q" data-q="${qid}" onclick="mL(this)"><div class="m-txt">${cleanText}</div></div>`;
           });
           opts.forEach((o) => {
-            rightHtml += `<div class="m-row" data-text="${o.text}">
-              <div class="m-r m-ltr" data-text="${o.text}" onclick="mR(this)"></div>
-              <div class="m-txt">${o.text}</div>
-            </div>`;
+            rightHtml += `<div class="m-row m-row-a" data-text="${o.text}" onclick="mR(this)"><div class="m-txt">${o.text}</div></div>`;
           });
-          return `<div class="m-conn"><svg class="m-svg"></svg><div class="m-col m-col-q">${leftHtml}</div><div class="m-col m-col-a">${rightHtml}</div></div>`;
+          return `<div class="m-conn"><svg class="m-svg"><path class="m-preview" d="" opacity="0"/></svg><div class="m-col m-col-q">${leftHtml}</div><div class="m-col m-col-a">${rightHtml}</div></div>`;
         }
 
         finalSet.forEach((q) => {
@@ -1264,6 +1240,9 @@
 
         document.getElementById("qCont").innerHTML = html;
         document.getElementById("tCnt").textContent = curQ.length;
+        document.querySelector('.m-col-a')?.addEventListener('mousemove',e=>{const r=e.target.closest('.m-row-a');if(r)mPreview(r);else mPreviewOff()});
+        document.querySelector('.m-col-a')?.addEventListener('mouseleave',mPreviewOff);
+        _mc();
         uprog();
 
         startT = Date.now();
@@ -1322,7 +1301,12 @@
       }
       const _mColors = ['#3b82f6','#ef4444','#22c55e','#f59e0b','#8b5cf6','#ec4899','#14b8a6','#a855f7'];
       function _mc() {
-        document.querySelectorAll('.m-l,.m-r').forEach(el => el.removeAttribute('data-conn'));
+        document.querySelectorAll('.m-row-q,.m-row-a').forEach(el => {
+          el.style.borderColor = ''; el.style.background = '';
+        });
+        document.querySelectorAll('.m-row-q').forEach(el => {
+          if (!ans[el.dataset.q]) el.style.borderColor = 'var(--t3)';
+        });
         const svg = document.querySelector('.m-svg'), conn = document.querySelector('.m-conn');
         if (!svg || !conn) return;
         const cr = conn.getBoundingClientRect();
@@ -1330,38 +1314,64 @@
         svg.setAttribute('height',cr.height);
         svg.style.width = cr.width+'px';
         svg.style.height = cr.height+'px';
-        const paths = [];
-        document.querySelectorAll('.m-l').forEach(el => {
+        svg.querySelectorAll('path:not(.m-preview)').forEach(p => p.remove());
+        const preview = svg.querySelector('.m-preview');
+        document.querySelectorAll('.m-row-q').forEach(el => {
           const qid = el.dataset.q, txt = ans[qid];
           if (!txt) return;
-          const rEl = document.querySelector(`.m-r[data-text="${txt}"]`);
+          const rEl = document.querySelector(`.m-row-a[data-text="${txt}"]`);
           if (!rEl) return;
-          const ri = [...document.querySelectorAll('.m-r')].indexOf(rEl);
+          const ri = [...document.querySelectorAll('.m-row-a')].indexOf(rEl);
           const lr = el.getBoundingClientRect(), rr = rEl.getBoundingClientRect();
           const x1 = lr.right-cr.left, y1 = lr.top+lr.height/2-cr.top;
           const x2 = rr.left-cr.left, y2 = rr.top+rr.height/2-cr.top;
           const cx = (x1+x2)/2;
           const c = _mColors[ri%_mColors.length];
-          paths.push(`<path d="M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>`);
-          el.dataset.conn = '1';
-          rEl.dataset.conn = '1';
+          const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+          p.setAttribute('d',`M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`);
+          p.setAttribute('stroke',c); p.setAttribute('stroke-width','3');
+          p.setAttribute('fill','none'); p.setAttribute('stroke-linecap','round');
+          p.setAttribute('stroke-linejoin','round'); p.setAttribute('opacity','0.85');
+          svg.insertBefore(p, preview);
+          el.style.borderColor = c; el.style.background = c+'15';
+          rEl.style.borderColor = c; rEl.style.background = c+'15';
         });
-        svg.innerHTML = paths.join('');
       }
       function mL(el) {
-        const qid = el.dataset.q;
-        if (ans[qid]) { delete ans[qid]; _mc(); uprog(); saveState(); el.removeAttribute('data-conn'); return; }
-        document.querySelectorAll('.m-l.sel').forEach(e=>e.classList.remove('sel'));
+        document.querySelectorAll('.m-row-q.sel').forEach(e=>e.classList.remove('sel'));
         el.classList.add('sel');
+        mPreviewOff();
       }
+      let _mPT = null;
+      function mPreview(el) {
+        const sel = document.querySelector('.m-row-q.sel');
+        if (!sel) { mPreviewOff(); return; }
+        if (_mPT === el) return;
+        _mPT = el;
+        const svg = document.querySelector('.m-svg'), conn = document.querySelector('.m-conn');
+        if (!svg || !conn) return;
+        const cr = conn.getBoundingClientRect();
+        const lr = sel.getBoundingClientRect(), rr = el.getBoundingClientRect();
+        const x1 = lr.right-cr.left, y1 = lr.top+lr.height/2-cr.top;
+        const x2 = rr.left-cr.left, y2 = rr.top+rr.height/2-cr.top;
+        const cx = (x1+x2)/2;
+        const p = svg.querySelector('.m-preview');
+        if (!p) return;
+        p.setAttribute('d', `M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`);
+        p.setAttribute('stroke', 'var(--t3)');
+        p.setAttribute('stroke-width', '3');
+        p.setAttribute('fill', 'none');
+        p.setAttribute('stroke-dasharray', '6,5');
+        p.setAttribute('opacity', '0.6');
+      }
+      function mPreviewOff() { _mPT = null; const p = document.querySelector('.m-preview'); if (p) p.setAttribute('d',''); p.setAttribute('opacity','0'); }
       function mR(el) {
-        const sel = document.querySelector('.m-l.sel');
+        mPreviewOff();
+        const sel = document.querySelector('.m-row-q.sel');
         if (!sel) return;
         const qid = sel.dataset.q, txt = el.dataset.text;
-        for (const [k,v] of Object.entries(ans)) {
-          if (v === txt && k !== qid) { delete ans[k]; break; }
-        }
-        ans[qid] = txt;
+        if (ans[qid] === txt) { delete ans[qid]; }
+        else { ans[qid] = txt; }
         sel.classList.remove('sel');
         _mc();
         uprog(); saveState();
@@ -1402,6 +1412,8 @@
           if (q.type === "match") {
             gradableTotal++;
             if (!userAns) {
+              const lRow = document.querySelector(`.m-row[data-q="${qid}"]`);
+              if (lRow) lRow.style.borderColor = 'var(--err)';
               if (correctAns) {
                 const rRow = document.querySelector(`.m-row[data-text="${correctAns}"]`);
                 if (rRow) rRow.style.borderColor = 'var(--ok)';
