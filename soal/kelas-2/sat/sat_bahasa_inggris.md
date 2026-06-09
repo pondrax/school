@@ -249,35 +249,35 @@ Choose the correct answer!
 ### B. True or False (Benar atau Salah)
 Write (T) for True and (F) for False!
 
-16. Father, mother, and children are a family. (___) <!--correct:T-->
+16. Father, mother, and children are a family. (___) <!--correct:B-->
 
-17. The opposite of "old" is "young". (___) <!--correct:T-->
+17. The opposite of "old" is "young". (___) <!--correct:B-->
 
-18. Chicken produces milk. (___) <!--correct:F-->
+18. Chicken produces milk. (___) <!--correct:S-->
 
-19. Cow eats meat. (___) <!--correct:F-->
+19. Cow eats meat. (___) <!--correct:S-->
 
-20. "Water" is a drink. (___) <!--correct:T-->
+20. "Water" is a drink. (___) <!--correct:B-->
 
-21. Rabbit has a long tail. (___) <!--correct:F-->
+21. Rabbit has a long tail. (___) <!--correct:S-->
 
-22. Elephant is a big animal. (___) <!--correct:T-->
+22. Elephant is a big animal. (___) <!--correct:B-->
 
-23. Giraffe eats meat. (___) <!--correct:F-->
+23. Giraffe eats meat. (___) <!--correct:S-->
 
-24. Fish can fly. (___) <!--correct:F-->
+24. Fish can fly. (___) <!--correct:S-->
 
-25. Snake has legs. (___) <!--correct:F-->
+25. Snake has legs. (___) <!--correct:S-->
 
-26. "He" is used for a boy. (___) <!--correct:T-->
+26. "He" is used for a boy. (___) <!--correct:B-->
 
-27. "They" is used for one person. (___) <!--correct:F-->
+27. "They" is used for one person. (___) <!--correct:S-->
 
-28. Water is a drink. (___) <!--correct:T-->
+28. Water is a drink. (___) <!--correct:B-->
 
-29. Chicken produces eggs. (___) <!--correct:T-->
+29. Chicken produces eggs. (___) <!--correct:B-->
 
-30. The opposite of "tall" is "short". (___) <!--correct:T-->
+30. The opposite of "tall" is "short". (___) <!--correct:B-->
 
 ### C. Matching (Menjodohkan)
 Match the description with the correct animal!
@@ -306,54 +306,30 @@ Fill in the blanks with the correct answer!
 
 26. My father's mother is my ... <!--correct:Grandmother-->
 
-27. My mother is ... (tinggi).
-    a. Short
-    b. Tall <!--correct-->
+27. My mother is ... (tinggi). <!--correct:Tall-->
 
-28. Snail is ... animal. (lambat)
-    a. Fast
-    b. Slow <!--correct-->
+28. Snail is ... animal. (lambat) <!--correct:Slow-->
 
 29. Arrange the letters: I-H-S-F → ... <!--correct:Fish-->
 
 30. I am hungry. I want to ... <!--correct:Eat-->
 
-31. My uncle is my ... brother.
-    a. Father's <!--correct-->
-    b. Mother's
+31. My uncle is my ... brother. <!--correct:Father's-->
 
-32. Rabbit likes to eat ...
-    a. Carrot <!--correct-->
-    b. Fish
+32. Rabbit likes to eat ... <!--correct:Carrot-->
 
-33. The opposite of "hot" is ...
-    a. Cold <!--correct-->
-    b. Warm
+33. The opposite of "hot" is ... <!--correct:Cold-->
 
-34. "Cat" in Indonesian is ...
-    a. Anjing
-    b. Kucing <!--correct-->
+34. "Cat" in Indonesian is ... <!--correct:Kucing-->
 
-35. Snake has no ...
-    a. Legs <!--correct-->
-    b. Head
+35. Snake has no ... <!--correct:Legs-->
 
-36. My sister is my parents' ...
-    a. Son
-    b. Daughter <!--correct-->
+36. My sister is my parents' ... <!--correct:Daughter-->
 
-37. "I" in Indonesian is ...
-    a. Saya <!--correct-->
-    b. Kamu
+37. "I" in Indonesian is ... <!--correct:Saya-->
 
-38. Fish can ... in the water.
-    a. Fly
-    b. Swim <!--correct-->
+38. Fish can ... in the water. <!--correct:Swim-->
 
-39. The color of banana is ...
-    a. Red
-    b. Yellow <!--correct-->
+39. The color of banana is ... <!--correct:Yellow-->
 
-40. Arrange: you - like - do - milk - ?
-    a. Do you like milk? <!--correct-->
-    b. You do like milk?
+40. Arrange: you - like - do - milk - ? <!--correct:Do you like milk?-->
