@@ -14,20 +14,18 @@ Pilihlah jawaban yang paling tepat!
 
 2. Pada bilangan 356, angka 5 bernilai ...
    a. satuan
-   b. puluhan
-   c. ratusan <!--correct-->
-   d. ribuan
-
+   b. puluhan <!--correct-->
+   c. ratusan
 3. Manakah bilangan yang paling kecil?
-   a. 305
+   a. 305 <!--correct-->
    b. 350
    c. 503
-   d. 530 <!--correct-->
+   d. 530
 
 4. Urutan bilangan dari yang terbesar adalah ...
-   a. 210, 201, 120
+   a. 210, 201, 120 <!--correct-->
    b. 201, 210, 120
-   c. 210, 120, 201 <!--correct-->
+   c. 210, 120, 201
    d. 120, 201, 210
 
 5. Di dalam kelas ada 12 putri dan 10 putra. Berapa banyak siswa di dalam kelas itu?
@@ -87,10 +85,10 @@ Pilihlah jawaban yang paling tepat!
     d. 54
 
 14. Berapakah bilangan yang terletak di antara 230 dan 240?
-    a. 231
-    b. 235
+    a. 225
+    b. 235 <!--correct-->
     c. 245
-    d. 325 <!--correct-->
+    d. 325
 
 15. Hitunglah: 9 x 8 = ...
     a. 64
@@ -135,15 +133,15 @@ Pilihlah jawaban yang paling tepat!
    d. ribuan
 
 3. Manakah bilangan yang paling kecil?
-   a. 408
+   a. 408 <!--correct-->
    b. 480
    c. 804
-   d. 840 <!--correct-->
+   d. 840
 
 4. Urutan bilangan dari yang terbesar adalah ...
-   a. 320, 302, 230
+   a. 320, 302, 230 <!--correct-->
    b. 230, 302, 320
-   c. 320, 230, 302 <!--correct-->
+   c. 320, 230, 302
    d. 302, 320, 230
 
 5. Di dalam kelas ada 15 putri dan 12 putra. Berapa banyak siswa di dalam kelas itu?
@@ -203,10 +201,10 @@ Pilihlah jawaban yang paling tepat!
     d. 79
 
 14. Berapakah bilangan yang terletak di antara 450 dan 460?
-    a. 451
-    b. 455
+    a. 445
+    b. 455 <!--correct-->
     c. 465
-    d. 545 <!--correct-->
+    d. 545
 
 15. Hitunglah: 7 x 9 = ...
     a. 56
@@ -253,13 +251,13 @@ Pilihlah jawaban yang paling tepat!
 3. Manakah bilangan yang paling kecil?
    a. 502
    b. 520
-   c. 250
-   d. 205 <!--correct-->
+   c. 250 <!--correct-->
+   d. 205
 
 4. Urutan bilangan dari yang terbesar adalah ...
-   a. 420, 402, 240
+   a. 420, 402, 240 <!--correct-->
    b. 240, 402, 420
-   c. 420, 240, 402 <!--correct-->
+   c. 420, 240, 402
    d. 402, 420, 240
 
 5. Di dalam kelas ada 14 putri dan 13 putra. Berapa banyak siswa di dalam kelas itu?
@@ -319,10 +317,10 @@ Pilihlah jawaban yang paling tepat!
     d. 78
 
 14. Berapakah bilangan yang terletak di antara 630 dan 640?
-    a. 631
-    b. 635
+    a. 625
+    b. 635 <!--correct-->
     c. 645
-    d. 735 <!--correct-->
+    d. 735
 
 15. Hitunglah: 8 x 4 = ...
     a. 24
