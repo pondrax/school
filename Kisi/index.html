@@ -1,538 +1,606 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kisi-Kisi - Kelas 2</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #0f172a;
-        --bg2: #1e293b;
-        --bg3: #263549;
-        --opt: #2a3a50;
-        --opt-h: #334561;
-        --t1: #f1f5f9;
-        --t2: #94a3b8;
-        --t3: #64748b;
-        --ac: #3b82f6;
-        --ac2: #2563eb;
-        --acg: rgba(59, 130, 246, 0.3);
-        --ok: #22c55e;
-        --brd: #334155;
-        --r: 12px;
-        --rs: 8px;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        background: var(--bg);
-        color: var(--t1);
-        min-height: 100vh;
-        line-height: 1.6;
-      }
 
-      /* ===== HEADER ===== */
-      .header {
-        background: linear-gradient(135deg, #1e3a5f, #0f172a);
-        border-bottom: 1px solid var(--brd);
-        padding: 16px 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        backdrop-filter: blur(10px);
-      }
-      .header-inner {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .header h1 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #60a5fa, #a78bfa);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .header .sub {
-        font-size: 0.78rem;
-        color: var(--t3);
-        margin-top: 2px;
-      }
-      .btn-home {
-        background: 0 0;
-        border: 1px solid var(--brd);
-        color: var(--t2);
-        padding: 7px 14px;
-        border-radius: var(--rs);
-        cursor: pointer;
-        font-size: 0.83rem;
-        font-family: inherit;
-        transition: all 0.2s;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .btn-home:hover {
-        background: var(--opt);
-        color: var(--t1);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kisi-Kisi - Kelas 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #1e293b;
+      --bg3: #263549;
+      --opt: #2a3a50;
+      --opt-h: #334561;
+      --t1: #f1f5f9;
+      --t2: #94a3b8;
+      --t3: #64748b;
+      --ac: #3b82f6;
+      --ac2: #2563eb;
+      --acg: rgba(59, 130, 246, 0.3);
+      --ok: #22c55e;
+      --brd: #334155;
+      --r: 12px;
+      --rs: 8px;
+    }
 
-      /* ===== CONTAINER ===== */
-      .container {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 28px 24px 80px;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      .type-selector {
-        margin-bottom: 28px;
-        width: 100%;
-        max-width: 400px;
-      }
-      .sel-type {
-        width: 100%;
-        padding: 12px 16px;
-        background: var(--bg2);
-        border: 1px solid var(--brd);
-        border-radius: var(--rs);
-        color: var(--t1);
-        font-family: inherit;
-        font-size: 1rem;
-        cursor: pointer;
-        outline: none;
-        transition: border-color 0.2s;
-        appearance: none;
-        -webkit-appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M6 8L0 0h12z' fill='%2394a3b8'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 14px center;
-        padding-right: 40px;
-      }
-      .sel-type:hover { border-color: var(--ac); }
-      .sel-type:focus {
-        border-color: var(--ac);
-        box-shadow: 0 0 0 3px var(--acg);
-      }
-      .sel-type option {
-        background: var(--bg2);
-        color: var(--t1);
-      }
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--t1);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-      /* ===== PICKER VIEW ===== */
-      .picker {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 60vh;
-        text-align: center;
-      }
-      .picker.hidden {
-        display: none;
-      }
-      .picker .icon {
-        font-size: 3.5rem;
-        margin-bottom: 12px;
-      }
-      .picker h2 {
-        font-size: 1.8rem;
-        font-weight: 800;
-        margin-bottom: 6px;
-        background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .picker p {
-        color: var(--t2);
-        margin-bottom: 36px;
-        font-size: 1rem;
-      }
-      .file-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 16px;
-        width: 100%;
-        max-width: 960px;
-      }
-      .file-card {
-        background: var(--bg2);
-        border: 1px solid var(--brd);
-        border-radius: var(--r);
-        padding: 26px;
-        cursor: pointer;
-        transition: all 0.25s;
-        text-align: left;
-        position: relative;
-        overflow: hidden;
-      }
-      .file-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--ac), #a78bfa);
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(135deg, #1e3a5f, #0f172a);
+      border-bottom: 1px solid var(--brd);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header .sub {
+      font-size: 0.78rem;
+      color: var(--t3);
+      margin-top: 2px;
+    }
+
+    .btn-home {
+      background: 0 0;
+      border: 1px solid var(--brd);
+      color: var(--t2);
+      padding: 7px 14px;
+      border-radius: var(--rs);
+      cursor: pointer;
+      font-size: 0.83rem;
+      font-family: inherit;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-home:hover {
+      background: var(--opt);
+      color: var(--t1);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 28px 24px 80px;
+    }
+
+    .type-selector {
+      margin-bottom: 28px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .sel-type {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg2);
+      border: 1px solid var(--brd);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M6 8L0 0h12z' fill='%2394a3b8'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+
+    .sel-type:hover {
+      border-color: var(--ac);
+    }
+
+    .sel-type:focus {
+      border-color: var(--ac);
+      box-shadow: 0 0 0 3px var(--acg);
+    }
+
+    .sel-type option {
+      background: var(--bg2);
+      color: var(--t1);
+    }
+
+    /* ===== PICKER VIEW ===== */
+    .picker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+    }
+
+    .picker.hidden {
+      display: none;
+    }
+
+    .picker .icon {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+    }
+
+    .picker h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .picker p {
+      color: var(--t2);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .file-card {
+      background: var(--bg2);
+      border: 1px solid var(--brd);
+      border-radius: var(--r);
+      padding: 26px;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .file-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--ac), #a78bfa);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .file-card:hover {
+      background: var(--bg3);
+      border-color: var(--ac);
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.4),
+        0 0 20px var(--acg);
+    }
+
+    .file-card:hover::before {
+      opacity: 1;
+    }
+
+    .file-card .emoji {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .file-card .name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .file-card .desc {
+      font-size: 0.85rem;
+      color: var(--t3);
+    }
+
+    /* ===== PREVIEW VIEW ===== */
+    .preview {
+      display: none;
+    }
+
+    .preview.active {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        transform: translateY(16px);
         opacity: 0;
-        transition: opacity 0.25s;
       }
-      .file-card:hover {
-        background: var(--bg3);
-        border-color: var(--ac);
-        transform: translateY(-2px);
-        box-shadow:
-          0 10px 15px -3px rgba(0, 0, 0, 0.4),
-          0 0 20px var(--acg);
-      }
-      .file-card:hover::before {
+
+      to {
+        transform: translateY(0);
         opacity: 1;
       }
-      .file-card .emoji {
-        font-size: 2rem;
-        display: block;
-        margin-bottom: 12px;
-      }
-      .file-card .name {
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 4px;
-      }
-      .file-card .desc {
-        font-size: 0.85rem;
-        color: var(--t3);
-      }
+    }
 
-      /* ===== PREVIEW VIEW ===== */
-      .preview {
-        display: none;
-      }
-      .preview.active {
-        display: block;
-        animation: fadeUp 0.3s ease;
-      }
-      @keyframes fadeUp {
-        from {
-          transform: translateY(16px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-      .preview-header {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 28px;
-      }
-      .preview-header .emoji {
-        font-size: 2.5rem;
-      }
-      .preview-header h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--t1);
-      }
-      .preview-header .meta {
-        font-size: 0.88rem;
-        color: var(--t2);
-        margin-top: 2px;
-      }
-      .btn-back-preview {
-        margin-left: auto;
-        background: 0 0;
-        border: 1px solid var(--brd);
-        color: var(--t2);
-        padding: 9px 18px;
-        border-radius: var(--rs);
-        cursor: pointer;
-        font-size: 0.85rem;
-        font-family: inherit;
-        transition: all 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .btn-back-preview:hover {
-        background: var(--opt);
-        color: var(--t1);
-      }
+    .preview-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
 
-      /* ===== TABLE STYLING ===== */
-      .kisi-section {
-        margin-bottom: 28px;
-      }
-      .kisi-section h3 {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 14px;
-        padding: 12px 18px;
-        background: linear-gradient(
-          135deg,
+    .preview-header .emoji {
+      font-size: 2.5rem;
+    }
+
+    .preview-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--t1);
+    }
+
+    .preview-header .meta {
+      font-size: 0.88rem;
+      color: var(--t2);
+      margin-top: 2px;
+    }
+
+    .btn-back-preview {
+      margin-left: auto;
+      background: 0 0;
+      border: 1px solid var(--brd);
+      color: var(--t2);
+      padding: 9px 18px;
+      border-radius: var(--rs);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-family: inherit;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-back-preview:hover {
+      background: var(--opt);
+      color: var(--t1);
+    }
+
+    /* ===== TABLE STYLING ===== */
+    .kisi-section {
+      margin-bottom: 28px;
+    }
+
+    .kisi-section h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg,
           rgba(59, 130, 246, 0.15),
-          rgba(167, 139, 250, 0.15)
-        );
-        border-left: 4px solid var(--ac);
-        border-radius: 0 var(--rs) var(--rs) 0;
-        color: #93c5fd;
+          rgba(167, 139, 250, 0.15));
+      border-left: 4px solid var(--ac);
+      border-radius: 0 var(--rs) var(--rs) 0;
+      color: #93c5fd;
+    }
+
+    .kisi-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--r);
+      border: 1px solid var(--brd);
+      background: var(--bg2);
+    }
+
+    .kisi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .kisi-table thead th {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.12));
+      padding: 13px 16px;
+      text-align: left;
+      font-weight: 600;
+      color: #93c5fd;
+      border-bottom: 2px solid var(--brd);
+      white-space: nowrap;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .kisi-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+      color: var(--t2);
+      vertical-align: top;
+    }
+
+    .kisi-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .kisi-table tbody tr:hover {
+      background: rgba(59, 130, 246, 0.05);
+    }
+
+    .kisi-table tbody td:first-child {
+      color: var(--ac);
+      font-weight: 600;
+      text-align: center;
+      min-width: 44px;
+    }
+
+    .kisi-table tbody td:nth-child(4) {
+      white-space: nowrap;
+    }
+
+    .kisi-table tbody td:nth-child(5) {
+      text-align: center;
+      font-weight: 600;
+      color: var(--t3);
+    }
+
+    .badge-pg {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+    }
+
+    .badge-bs {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+    }
+
+    .badge-isian {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+    }
+
+    /* ===== LOADING ===== */
+    .loading {
+      text-align: center;
+      padding: 80px;
+      color: var(--t2);
+      font-size: 1.1rem;
+    }
+
+    .loading .spinner {
+      width: 42px;
+      height: 42px;
+      border: 4px solid var(--brd);
+      border-top-color: var(--ac);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 18px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
-      .kisi-table-wrap {
-        overflow-x: auto;
-        border-radius: var(--r);
-        border: 1px solid var(--brd);
-        background: var(--bg2);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .file-grid {
+        grid-template-columns: 1fr;
       }
-      .kisi-table {
+
+      .picker h2 {
+        font-size: 1.4rem;
+      }
+
+      .header h1 {
+        font-size: 1rem;
+      }
+
+      .preview-header {
+        flex-wrap: wrap;
+      }
+
+      .btn-back-preview {
+        margin-left: 0;
         width: 100%;
-        border-collapse: collapse;
-        font-size: 0.92rem;
+        justify-content: center;
       }
-      .kisi-table thead th {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.12));
-        padding: 13px 16px;
-        text-align: left;
-        font-weight: 600;
-        color: #93c5fd;
-        border-bottom: 2px solid var(--brd);
-        white-space: nowrap;
+
+      .kisi-table {
         font-size: 0.82rem;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
       }
+
+      .kisi-table thead th,
       .kisi-table tbody td {
-        padding: 12px 16px;
-        border-bottom: 1px solid rgba(51, 65, 85, 0.5);
-        color: var(--t2);
-        vertical-align: top;
+        padding: 10px 10px;
       }
-      .kisi-table tbody tr:last-child td {
-        border-bottom: none;
-      }
-      .kisi-table tbody tr:hover {
-        background: rgba(59, 130, 246, 0.05);
-      }
-      .kisi-table tbody td:first-child {
-        color: var(--ac);
-        font-weight: 600;
-        text-align: center;
-        min-width: 44px;
-      }
-      .kisi-table tbody td:nth-child(4) {
-        white-space: nowrap;
-      }
-      .kisi-table tbody td:nth-child(5) {
-        text-align: center;
-        font-weight: 600;
-        color: var(--t3);
-      }
-      .badge-pg {
-        display: inline-block;
-        padding: 2px 10px;
-        border-radius: 20px;
-        font-size: 0.78rem;
-        font-weight: 600;
-        background: rgba(59, 130, 246, 0.15);
-        color: #60a5fa;
-      }
-      .badge-bs {
-        display: inline-block;
-        padding: 2px 10px;
-        border-radius: 20px;
-        font-size: 0.78rem;
-        font-weight: 600;
-        background: rgba(168, 85, 247, 0.15);
-        color: #c084fc;
-      }
-      .badge-isian {
-        display: inline-block;
-        padding: 2px 10px;
-        border-radius: 20px;
-        font-size: 0.78rem;
-        font-weight: 600;
-        background: rgba(34, 197, 94, 0.15);
-        color: #4ade80;
-      }
+    }
+  </style>
+</head>
 
-      /* ===== LOADING ===== */
-      .loading {
-        text-align: center;
-        padding: 80px;
-        color: var(--t2);
-        font-size: 1.1rem;
-      }
-      .loading .spinner {
-        width: 42px;
-        height: 42px;
-        border: 4px solid var(--brd);
-        border-top-color: var(--ac);
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-        margin: 0 auto 18px;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 600px) {
-        .file-grid {
-          grid-template-columns: 1fr;
-        }
-        .picker h2 {
-          font-size: 1.4rem;
-        }
-        .header h1 {
-          font-size: 1rem;
-        }
-        .preview-header {
-          flex-wrap: wrap;
-        }
-        .btn-back-preview {
-          margin-left: 0;
-          width: 100%;
-          justify-content: center;
-        }
-        .kisi-table {
-          font-size: 0.82rem;
-        }
-        .kisi-table thead th,
-        .kisi-table tbody td {
-          padding: 10px 10px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="header">
-      <div class="header-inner">
-        <div>
-          <h1 id="hTitle">Kisi-Kisi Soal</h1>
-          <div class="sub" id="hSub">Kelas 2 — Pilih jenis & mapel</div>
-        </div>
-        <a href="/" class="btn-home">📝 Bank Soal</a>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <div>
+        <h1 id="hTitle">Kisi-Kisi Soal</h1>
+        <div class="sub" id="hSub">Kelas 2 — Pilih jenis & mapel</div>
       </div>
+      <a href="/" class="btn-home">📝 Bank Soal</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="picker" id="picker">
+      <div class="icon">📋</div>
+      <h2>Kisi-Kisi Soal</h2>
+      <p id="pickerDesc">Pilih jenis kisi dan mata pelajaran</p>
+      <div class="type-selector">
+        <select id="typeSelect" onchange="switchType(this.value)" class="sel-type"></select>
+      </div>
+      <div class="file-grid" id="grid"></div>
     </div>
 
-    <div class="container">
-      <div class="picker" id="picker">
-        <div class="icon">📋</div>
-        <h2>Kisi-Kisi Soal</h2>
-        <p id="pickerDesc">Pilih jenis kisi dan mata pelajaran</p>
-        <div class="type-selector">
-          <select id="typeSelect" onchange="switchType(this.value)" class="sel-type"></select>
-        </div>
-        <div class="file-grid" id="grid"></div>
-      </div>
-
-      <div class="preview" id="preview">
-        <div class="preview-header" id="previewHeader"></div>
-        <div id="previewContent"></div>
-      </div>
+    <div class="preview" id="preview">
+      <div class="preview-header" id="previewHeader"></div>
+      <div id="previewContent"></div>
     </div>
+  </div>
 
-    <script>
-      // ========== TYPE CONFIG ==========
-      const KISI_TYPES = [
-        {
-          id: "sts",
-          label: "📘 STS Genap (Tengah Semester)",
-          ext: ".md",
-          meta: "Kisi-Kisi STS Genap — MI Al-Azhar Kelas II",
-          subjects: [
-            { key: "bahasa_indonesia", file: "kelas-2/sts/kisi_bahasa_indonesia.md", emoji: "📖", name: "Bahasa Indonesia", desc: "Fabel, Antonim, Sifat, Sapaan" },
-            { key: "bahasa_inggris", file: "kelas-2/sts/kisi_bahasa_inggris.md", emoji: "🌍", name: "Bahasa Inggris", desc: "Pronoun, Family, Adjective" },
-            { key: "matematika", file: "kelas-2/sts/kisi_matematika.md", emoji: "🔢", name: "Matematika", desc: "Pecahan, Berat, Waktu, Jam" },
-            { key: "seni_rupa", file: "kelas-2/sts/kisi_seni_rupa.md", emoji: "🎨", name: "Seni Rupa", desc: "Kolase, Teknik, Keselamatan" },
-            { key: "ipas", file: "kelas-2/sts/kisi_ipas.md", emoji: "🔬", name: "IPAS", desc: "Identitas, Dokumen, Silsilah" },
-            { key: "pancasila", file: "kelas-2/sts/kisi_pancasila.md", emoji: "🇮🇩", name: "Pancasila", desc: "Identitas, Toleransi, Keberagaman" },
-            { key: "aqidah_akhlak", file: "kelas-2/sts/kisi_aqidah_akhlak.md", emoji: "🕌", name: "Aqidah Akhlak", desc: "Adab Bersin, Menguap, Rajin Belajar" },
-            { key: "fiqih", file: "kelas-2/sts/kisi_fiqih.md", emoji: "🤲", name: "Fiqih", desc: "Salat Berjamaah, Imam, Makmum" },
-            { key: "qurdits", file: "kelas-2/sts/kisi_qurdits.md", emoji: "📗", name: "Al-Qur'an Hadits", desc: "Al-Kafirun, Tajwid, Alif Lam" },
-            { key: "bahasa_arab", file: "kelas-2/sts/kisi_bahasa_arab.md", emoji: "🇸🇦", name: "Bahasa Arab", desc: "Alat Transportasi, Harf Hijaiyah" },
-            { key: "bahasa_jawa", file: "kelas-2/sts/kisi_bahasa_jawa.md", emoji: "🎭", name: "Bahasa Jawa", desc: "Reresik Omah, Cathetan Padinan, Basa Krama" },
-          ],
-        },
-        {
-          id: "sat",
-          label: "📕 SAT Genap (Akhir Tahun)",
-          basePath: "kelas-2/sat/",
-          ext: ".docx",
-          meta: "Kisi-Kisi SAT Genap — MI Al-Azhar Kelas II",
-          subjects: [
-            { key: "bahasa_indonesia", file: "kelas-2/sat/Kisi-Kisi Soal Bahasa Indonesia kelas 2.docx", emoji: "📖", name: "Bahasa Indonesia", desc: "Dokumen kisi SAT" },
-            { key: "bahasa_inggris", file: "kelas-2/sat/kisi_BHS INGGRIS_2.docx", emoji: "🌍", name: "Bahasa Inggris", desc: "Dokumen kisi SAT" },
-            { key: "matematika", file: "kelas-2/sat/KISI - KISI MTK KLS 2 SMT GENAP SAT.docx", emoji: "🔢", name: "Matematika", desc: "Dokumen kisi SAT" },
-            { key: "pancasila", file: "kelas-2/sat/Kisi-Kisi Soal Pend Pancasila Kls 2.docx", emoji: "🇮🇩", name: "Pancasila", desc: "Dokumen kisi SAT" },
-            { key: "aqidah_akhlak", file: "kelas-2/sat/kisi_aqidah_2.docx", emoji: "🕌", name: "Aqidah Akhlak", desc: "Dokumen kisi SAT" },
-            { key: "fiqih", file: "kelas-2/sat/kisi_fiqih_2.docx", emoji: "🤲", name: "Fiqih", desc: "Dokumen kisi SAT" },
-            { key: "qurdits", file: "kelas-2/sat/kisi_qurdist_2.docx", emoji: "📗", name: "Al-Qur'an Hadits", desc: "Dokumen kisi SAT" },
-            { key: "bahasa_arab", file: "kelas-2/sat/kisi_arab_2.docx", emoji: "🇸🇦", name: "Bahasa Arab", desc: "Dokumen kisi SAT" },
-            { key: "bahasa_jawa", file: "kelas-2/sat/kisi-kisi_bahasa jawa_2.docx", emoji: "🎭", name: "Bahasa Jawa", desc: "Dokumen kisi SAT" },
-          ],
-        },
-      ];
+  <script>
+    // ========== TYPE CONFIG ==========
+    const KISI_TYPES = [
+      {
+        id: "sts",
+        label: "📘 STS Genap (Tengah Semester)",
+        ext: ".md",
+        meta: "Kisi-Kisi STS Genap — MI Al-Azhar Kelas II",
+        subjects: [
+          { key: "bahasa_indonesia", file: "kelas-2/sts/kisi_bahasa_indonesia.md", emoji: "📖", name: "Bahasa Indonesia", desc: "Fabel, Antonim, Sifat, Sapaan" },
+          { key: "bahasa_inggris", file: "kelas-2/sts/kisi_bahasa_inggris.md", emoji: "🌍", name: "Bahasa Inggris", desc: "Pronoun, Family, Adjective" },
+          { key: "matematika", file: "kelas-2/sts/kisi_matematika.md", emoji: "🔢", name: "Matematika", desc: "Pecahan, Berat, Waktu, Jam" },
+          { key: "seni_rupa", file: "kelas-2/sts/kisi_seni_rupa.md", emoji: "🎨", name: "Seni Rupa", desc: "Kolase, Teknik, Keselamatan" },
+          { key: "ipas", file: "kelas-2/sts/kisi_ipas.md", emoji: "🔬", name: "IPAS", desc: "Identitas, Dokumen, Silsilah" },
+          { key: "pancasila", file: "kelas-2/sts/kisi_pancasila.md", emoji: "🇮🇩", name: "Pancasila", desc: "Identitas, Toleransi, Keberagaman" },
+          { key: "aqidah_akhlak", file: "kelas-2/sts/kisi_aqidah_akhlak.md", emoji: "🕌", name: "Aqidah Akhlak", desc: "Adab Bersin, Menguap, Rajin Belajar" },
+          { key: "fiqih", file: "kelas-2/sts/kisi_fiqih.md", emoji: "🤲", name: "Fiqih", desc: "Salat Berjamaah, Imam, Makmum" },
+          { key: "qurdits", file: "kelas-2/sts/kisi_qurdits.md", emoji: "📗", name: "Al-Qur'an Hadits", desc: "Al-Kafirun, Tajwid, Alif Lam" },
+          { key: "bahasa_arab", file: "kelas-2/sts/kisi_bahasa_arab.md", emoji: "🇸🇦", name: "Bahasa Arab", desc: "Alat Transportasi, Harf Hijaiyah" },
+          { key: "bahasa_jawa", file: "kelas-2/sts/kisi_bahasa_jawa.md", emoji: "🎭", name: "Bahasa Jawa", desc: "Reresik Omah, Cathetan Padinan, Basa Krama" },
+        ],
+      },
+      {
+        id: "sat",
+        label: "📕 SAT Genap (Akhir Tahun)",
+        basePath: "kelas-2/sat/",
+        ext: ".docx",
+        meta: "Kisi-Kisi SAT Genap — MI Al-Azhar Kelas II",
+        subjects: [
+          { key: "bahasa_indonesia", file: "kelas-2/sat/Kisi-Kisi Soal Bahasa Indonesia kelas 2.docx", emoji: "📖", name: "Bahasa Indonesia", desc: "Dokumen kisi SAT" },
+          { key: "bahasa_inggris", file: "kelas-2/sat/kisi_BHS INGGRIS_2.docx", emoji: "🌍", name: "Bahasa Inggris", desc: "Dokumen kisi SAT" },
+          { key: "matematika", file: "kelas-2/sat/KISI - KISI MTK KLS 2 SMT GENAP SAT.docx", emoji: "🔢", name: "Matematika", desc: "Dokumen kisi SAT" },
+          { key: "pancasila", file: "kelas-2/sat/Kisi-Kisi Soal Pend Pancasila Kls 2.docx", emoji: "🇮🇩", name: "Pancasila", desc: "Dokumen kisi SAT" },
+          { key: "aqidah_akhlak", file: "kelas-2/sat/kisi_aqidah_2.docx", emoji: "🕌", name: "Aqidah Akhlak", desc: "Dokumen kisi SAT" },
+          { key: "fiqih", file: "kelas-2/sat/kisi_fiqih_2.docx", emoji: "🤲", name: "Fiqih", desc: "Dokumen kisi SAT" },
+          { key: "qurdits", file: "kelas-2/sat/kisi_qurdist_2.docx", emoji: "📗", name: "Al-Qur'an Hadits", desc: "Dokumen kisi SAT" },
+          { key: "bahasa_arab", file: "kelas-2/sat/kisi_arab_2.docx", emoji: "🇸🇦", name: "Bahasa Arab", desc: "Dokumen kisi SAT" },
+          { key: "bahasa_jawa", file: "kelas-2/sat/kisi-kisi_bahasa jawa_2.docx", emoji: "🎭", name: "Bahasa Jawa", desc: "Dokumen kisi SAT" },
+        ],
+      },
+      {
+        id: "sts3",
+        label: "📗 STS Ganjil (Tengah Semester)",
+        ext: ".md",
+        meta: "Kisi-Kisi STS Ganjil — MI Al-Azhar Kelas III",
+        subjects: [
+          { key: "pancasila", file: "kelas-3/sts/kisi_pancasila.md", emoji: "🇮🇩", name: "Pancasila", desc: "Simbol, Nilai, Sejarah Pancasila" },
+          { key: "ipas", file: "kelas-3/sts/kisi_ipas.md", emoji: "🔬", name: "IPAS", desc: "Alat Indra, Tradisi, Silsilah, Gotong Royong" },
+          { key: "bahasa_jawa", file: "kelas-3/sts/kisi_bahasa_jawa.md", emoji: "🎭", name: "Bahasa Jawa", desc: "Cerita, Teks Laporan, Basa Krama" },
+          { key: "seni_budaya", file: "kelas-3/sts/kisi_seni_budaya.md", emoji: "🎨", name: "Seni Budaya", desc: "Garis, Warna, Tekstur, Gerak Tari" },
+          { key: "matematika", file: "kelas-3/sts/kisi_matematika.md", emoji: "🔢", name: "Matematika", desc: "Bilangan, Nilai Tempat, Penjumlahan & Perkalian" },
+          { key: "bahasa_inggris", file: "kelas-3/sts/kisi_bahasa_inggris.md", emoji: "🌍", name: "Bahasa Inggris", desc: "Vocabulary, Food Preference, Reading" },
+        ],
+      },
+    ];
 
-      let selectedType = localStorage.getItem("kisiType") || KISI_TYPES[0].id;
+    let selectedType = localStorage.getItem("kisiType") || KISI_TYPES[0].id;
 
-      function getType(id) { return KISI_TYPES.find((t) => t.id === id) || KISI_TYPES[0]; }
+    function getType(id) { return KISI_TYPES.find((t) => t.id === id) || KISI_TYPES[0]; }
 
-      // ========== INIT ==========
-      function populateTypeSelect() {
-        const sel = document.getElementById("typeSelect");
-        sel.innerHTML = KISI_TYPES.map(
-          (t) => `<option value="${t.id}"${t.id === selectedType ? " selected" : ""}>${t.label}</option>`,
-        ).join("");
-      }
-      function renderGrid() {
-        const type = getType(selectedType);
-        document.getElementById("hSub").textContent = "Kelas 2 — " + type.label.replace(/^[^\s]+\s/, "");
-        document.getElementById("pickerDesc").textContent = "Pilih mata pelajaran untuk melihat kisi-kisi";
-        document.getElementById("grid").innerHTML = type.subjects.map(
-          (s) => `<div class="file-card" onclick="loadKisi('${s.key}')">
+    // ========== INIT ==========
+    function populateTypeSelect() {
+      const sel = document.getElementById("typeSelect");
+      sel.innerHTML = KISI_TYPES.map(
+        (t) => `<option value="${t.id}"${t.id === selectedType ? " selected" : ""}>${t.label}</option>`,
+      ).join("");
+    }
+    function renderGrid() {
+      const type = getType(selectedType);
+      const kelas = type.id === "sts3" ? "Kelas 3" : "Kelas 2";
+      document.getElementById("hSub").textContent = kelas + " — " + type.label.replace(/^[^\s]+\s/, "");
+      document.getElementById("pickerDesc").textContent = "Pilih mata pelajaran untuk melihat kisi-kisi";
+      document.getElementById("grid").innerHTML = type.subjects.map(
+        (s) => `<div class="file-card" onclick="loadKisi('${s.key}')">
             <span class="emoji">${s.emoji}</span>
             <div class="name">${s.name}</div>
             <div class="desc">${s.desc}</div>
           </div>`,
-        ).join("");
-      }
-      populateTypeSelect();
+      ).join("");
+    }
+    populateTypeSelect();
+    renderGrid();
+
+    function switchType(val) {
+      selectedType = val;
+      localStorage.setItem("kisiType", val);
+      document.getElementById("hTitle").textContent = "Kisi-Kisi Soal";
       renderGrid();
+    }
 
-      function switchType(val) {
-        selectedType = val;
-        localStorage.setItem("kisiType", val);
-        document.getElementById("hTitle").textContent = "Kisi-Kisi Soal";
-        renderGrid();
-      }
+    // ========== LOAD KISI ==========
+    async function loadKisi(key) {
+      const type = getType(selectedType);
+      const info = type.subjects.find((s) => s.key === key);
+      if (!info) return;
 
-      // ========== LOAD KISI ==========
-      async function loadKisi(key) {
-        const type = getType(selectedType);
-        const info = type.subjects.find((s) => s.key === key);
-        if (!info) return;
+      document.getElementById("picker").classList.add("hidden");
+      const preview = document.getElementById("preview");
+      preview.classList.add("active");
 
-        document.getElementById("picker").classList.add("hidden");
-        const preview = document.getElementById("preview");
-        preview.classList.add("active");
-
-        document.getElementById("previewHeader").innerHTML = `
+      document.getElementById("previewHeader").innerHTML = `
           <span class="emoji">${info.emoji}</span>
           <div>
             <h2>${info.name}</h2>
@@ -541,9 +609,9 @@
           <button class="btn-back-preview" onclick="backToPicker()">← Kembali</button>
         `;
 
-        if (type.ext === ".docx") {
-          // DOCX files cannot be rendered inline
-          document.getElementById("previewContent").innerHTML = `
+      if (type.ext === ".docx") {
+        // DOCX files cannot be rendered inline
+        document.getElementById("previewContent").innerHTML = `
             <div class="loading" style="color:var(--t2)">
               <div style="font-size:3rem;margin-bottom:16px">📄</div>
               <div style="font-size:1.1rem;margin-bottom:8px">File Kisi-Kisi (DOCX)</div>
@@ -557,59 +625,59 @@
                 text-decoration:none;font-weight:600;font-size:1rem;
               ">⬇ Unduh ${info.name}.docx</a>
             </div>`;
-          return;
-        }
+        return;
+      }
 
+      document.getElementById("previewContent").innerHTML =
+        '<div class="loading"><div class="spinner"></div>Memuat kisi-kisi...</div>';
+
+      try {
+        const resp = await fetch(info.file);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const md = await resp.text();
+        renderKisi(md);
+      } catch (err) {
         document.getElementById("previewContent").innerHTML =
-          '<div class="loading"><div class="spinner"></div>Memuat kisi-kisi...</div>';
-
-        try {
-          const resp = await fetch(info.file);
-          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-          const md = await resp.text();
-          renderKisi(md);
-        } catch (err) {
-          document.getElementById("previewContent").innerHTML =
-            `<div class="loading" style="color:#ef4444">❌ Gagal memuat: ${err.message}</div>`;
-        }
+          `<div class="loading" style="color:#ef4444">❌ Gagal memuat: ${err.message}</div>`;
       }
+    }
 
-      function renderKisi(md) {
-        const lines = md.split("\n").filter((l) => l.trim());
-        let html = "";
-        let currentRows = [];
-        let sectionCount = 0;
-        const sectionNames = ["A. Pilihan Ganda", "B. Benar / Salah", "C. Isian"];
-        const sectionBadges = ["badge-pg", "badge-bs", "badge-isian"];
+    function renderKisi(md) {
+      const lines = md.split("\n").filter((l) => l.trim());
+      let html = "";
+      let currentRows = [];
+      let sectionCount = 0;
+      const sectionNames = ["A. Pilihan Ganda", "B. Benar / Salah", "C. Isian"];
+      const sectionBadges = ["badge-pg", "badge-bs", "badge-isian"];
 
-        for (const line of lines) {
-          const trimmed = line.trim();
-          if (trimmed.startsWith("# ") || trimmed.startsWith("**")) continue;
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith("# ") || trimmed.startsWith("**")) continue;
 
-          if (trimmed.startsWith("|")) {
-            const cells = trimmed.split("|").slice(1, -1).map((c) => c.trim());
-            if (cells.every((c) => /^-+$/.test(c))) continue;
-            if (cells[0] === "No") {
-              if (currentRows.length > 0) {
-                html += buildTable(currentRows, sectionNames[sectionCount], sectionBadges[sectionCount]);
-                sectionCount++;
-                currentRows = [];
-              }
-              continue;
+        if (trimmed.startsWith("|")) {
+          const cells = trimmed.split("|").slice(1, -1).map((c) => c.trim());
+          if (cells.every((c) => /^-+$/.test(c))) continue;
+          if (cells[0] === "No") {
+            if (currentRows.length > 0) {
+              html += buildTable(currentRows, sectionNames[sectionCount], sectionBadges[sectionCount]);
+              sectionCount++;
+              currentRows = [];
             }
-            currentRows.push(cells);
+            continue;
           }
+          currentRows.push(cells);
         }
-
-        if (currentRows.length > 0) {
-          html += buildTable(currentRows, sectionNames[sectionCount] || "Soal", sectionBadges[sectionCount] || "badge-pg");
-        }
-
-        document.getElementById("previewContent").innerHTML = html;
       }
 
-      function buildTable(rows, sectionName, badgeClass) {
-        let html = `<div class="kisi-section">
+      if (currentRows.length > 0) {
+        html += buildTable(currentRows, sectionNames[sectionCount] || "Soal", sectionBadges[sectionCount] || "badge-pg");
+      }
+
+      document.getElementById("previewContent").innerHTML = html;
+    }
+
+    function buildTable(rows, sectionName, badgeClass) {
+      let html = `<div class="kisi-section">
           <h3>${sectionName}</h3>
           <div class="kisi-table-wrap">
             <table class="kisi-table">
@@ -623,25 +691,26 @@
                 </tr>
               </thead>
               <tbody>`;
-        rows.forEach((cells) => {
-          const bentuk = (cells[3] || "").trim();
-          html += `<tr>
+      rows.forEach((cells) => {
+        const bentuk = (cells[3] || "").trim();
+        html += `<tr>
             <td>${cells[0] || ""}</td>
             <td>${cells[1] || ""}</td>
             <td>${cells[2] || ""}</td>
             <td><span class="${badgeClass}">${bentuk}</span></td>
             <td>${cells[4] || ""}</td>
           </tr>`;
-        });
-        html += `</tbody></table></div></div>`;
-        return html;
-      }
+      });
+      html += `</tbody></table></div></div>`;
+      return html;
+    }
 
-      function backToPicker() {
-        document.getElementById("preview").classList.remove("active");
-        document.getElementById("picker").classList.remove("hidden");
-        document.getElementById("previewContent").innerHTML = "";
-      }
-    </script>
-  </body>
+    function backToPicker() {
+      document.getElementById("preview").classList.remove("active");
+      document.getElementById("picker").classList.remove("hidden");
+      document.getElementById("previewContent").innerHTML = "";
+    }
+  </script>
+</body>
+
 </html>

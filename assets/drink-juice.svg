@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <rect x="44" y="26" width="32" height="12" rx="4" fill="#58a6c9"/>
+  <path d="M30 40 h60 v92 a22 22 0 0 1 -22 22 h-16 a22 22 0 0 1 -22 -22 Z" fill="#d6eaf8"/>
+  <path d="M30 74 h60 v58 a22 22 0 0 1 -22 22 h-16 a22 22 0 0 1 -22 -22 Z" fill="#85c1e9"/>
+  <text x="60" y="60" font-size="15" text-anchor="middle" fill="#1b4f72" font-family="sans-serif" font-weight="bold">JUI</text>
+  <circle cx="60" cy="106" r="12" fill="#f5b041"/>
+</svg>

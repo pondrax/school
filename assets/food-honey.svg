@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140">
+  <rect x="52" y="16" width="36" height="16" rx="4" fill="#a93226"/>
+  <path d="M38 50 h64 a8 8 0 0 1 8 8 v66 a8 8 0 0 1 -8 8 h-64 a8 8 0 0 1 -8 -8 v-66 a8 8 0 0 1 8 -8 Z" fill="#f39c12"/>
+  <rect x="42" y="60" width="56" height="50" rx="6" fill="#f7dc6f"/>
+  <text x="70" y="82" font-size="13" text-anchor="middle" fill="#7a5c1e" font-family="sans-serif" font-weight="bold">HONEY</text>
+  <path d="M70 86 l5 9 10 2 -7 7 2 10 -10 -5 -10 5 2 -10 -7 -7 10 -2 Z" fill="#b7950b"/>
+  <rect x="30" y="46" width="80" height="8" rx="4" fill="#d35400"/>
+</svg>

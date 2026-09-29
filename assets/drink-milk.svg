@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <rect x="44" y="26" width="32" height="12" rx="4" fill="#5dade2"/>
+  <path d="M30 40 h60 v92 a22 22 0 0 1 -22 22 h-16 a22 22 0 0 1 -22 -22 Z" fill="#eaf2f8" opacity="0.9"/>
+  <path d="M30 66 h60 v66 a22 22 0 0 1 -22 22 h-16 a22 22 0 0 1 -22 -22 Z" fill="#ffffff"/>
+  <path d="M30 96 h60 v36 a22 22 0 0 1 -22 22 h-16 a22 22 0 0 1 -22 -22 Z" fill="#fdfefe"/>
+  <path d="M34 104 h52 v30 a20 20 0 0 1 -20 20 h-12 a20 20 0 0 1 -20 -20 Z" fill="#d6eaf8"/>
+  <text x="60" y="80" font-size="15" text-anchor="middle" fill="#5dade2" font-family="sans-serif" font-weight="bold">MILK</text>
+</svg>
