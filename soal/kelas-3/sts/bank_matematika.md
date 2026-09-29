@@ -251,8 +251,8 @@ Pilihlah jawaban yang paling tepat!
 3. Manakah bilangan yang paling kecil?
    a. 502
    b. 520
-   c. 250 <!--correct-->
-   d. 205
+   c. 250
+   d. 205 <!--correct-->
 
 4. Urutan bilangan dari yang terbesar adalah ...
    a. 420, 402, 240 <!--correct-->
