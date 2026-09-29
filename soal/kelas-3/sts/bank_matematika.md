@@ -16,6 +16,7 @@ Pilihlah jawaban yang paling tepat!
    a. satuan
    b. puluhan <!--correct-->
    c. ratusan
+   d. ribuan
 3. Manakah bilangan yang paling kecil?
    a. 305 <!--correct-->
    b. 350
